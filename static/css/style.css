@@ -1,17 +1,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-body, html {
+body, h1, h2, p, html {
     height: 100%;
     font-family: 'Roboto', sans-serif;
+    text-align: center;
     color: #333;
     margin: 0;
     background-color: #f4f4f4;
   }
   
   .bgimg {
+    background-repeat: no-repeat;
+    background-size: cover;
     background-position: center;
-    background-size: contain;
     background-image: url('https://as1.ftcdn.net/v2/jpg/03/07/44/12/1000_F_307441238_BbbfCAgioP0WXn1Hapj8w8GPl5JB4ea6.jpg');
     min-height: 100%;
   }
