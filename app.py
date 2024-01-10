@@ -16,15 +16,15 @@ def contact():
 # Add routes for other pages here
 @app.route('/market-insights')
 def market_insights():
-    return render_template('Market-insights.html')
+    return render_template('market-insights.html')
 
 @app.route('/services')
 def services():
-    return render_template('Services.html')
+    return render_template('services.html')
 
 @app.route('/trade-ideas')
 def trade_ideas():
-    return render_template('Trade-ideas.html')
+    return render_template('trade-ideas.html')
 
 # Main execution
 if __name__ == '__main__':

@@ -1,6 +1,9 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body, html {
     height: 100%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #333;
     margin: 0;
     background-color: #f4f4f4;
@@ -9,16 +12,24 @@ body, html {
   .bgimg {
     background-position: center;
     background-size: cover;
-    background-image: url("/w3images/coffeehouse.jpg"); /* Update with your image */
+    background-image: url('https://as1.ftcdn.net/v2/jpg/03/07/44/12/1000_F_307441238_BbbfCAgioP0WXn1Hapj8w8GPl5JB4ea6.jpg');
     min-height: 75%;
   }
   
+  
   /* Retain your existing styles and add more from the template as needed */
   
-header {
-    background-color: #1a1a1a;
-    padding: 0.5rem 0;
-}
+  header {
+    text-align: center;
+    background-color: #1a1a1a; /* Adjust if necessary */
+    color: white; /* For better readability */
+  }
+  header h1 {
+    font-size: 40px; /* Adjust the size as needed */
+    margin: 0;
+    padding: 20px 0; /* Add some padding */
+  }
+  
 
 nav {
     width: 100%;
