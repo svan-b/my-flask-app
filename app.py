@@ -13,9 +13,19 @@ def about():
 def contact():
     return render_template('contact.html')
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
+# Add routes for other pages here
+@app.route('/market-insights')
+def market_insights():
+    return render_template('Market-insights.html')
 
+@app.route('/services')
+def services():
+    return render_template('Services.html')
+
+@app.route('/trade-ideas')
+def trade_ideas():
+    return render_template('Trade-ideas.html')
+
+# Main execution
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
