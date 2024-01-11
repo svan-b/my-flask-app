@@ -9,16 +9,7 @@ body, h1, h2, p, html {
     margin: 0;
     background-color: #f4f4f4;
   }
-  
-  .bgimg {
-    background-size: contain;
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-position: center;
-    background-image: url('https://as1.ftcdn.net/v2/jpg/03/07/44/12/1000_F_307441238_BbbfCAgioP0WXn1Hapj8w8GPl5JB4ea6.jpg');
-    min-height: 100%;
-  }
-  
-  
+
   /* Retain your existing styles and add more from the template as needed */
   
   header {
@@ -26,6 +17,11 @@ body, h1, h2, p, html {
     background-color: #1a1a1a; /* Adjust if necessary */
     color: white; /* For better readability */
     padding: 40px 0; /* Increase padding to make the header taller */
+    background-image: url('https://as1.ftcdn.net/v2/jpg/03/07/44/12/1000_F_307441238_BbbfCAgioP0WXn1Hapj8w8GPl5JB4ea6.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100%; /* Adjust as needed */
   }
   header h1 {
     text-align: center;
