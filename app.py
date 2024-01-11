@@ -13,9 +13,17 @@ def about():
 def contact():
     return render_template('contact.html')
 
-@app.route('/test')
+@app.route('/market-update')
 def test_page():
-    return render_template('test.html')
+    return render_template('market-update.html')
+
+@app.route('/services')
+def test_page():
+    return render_template('services.html')
+
+@app.route('/trade-ideas')
+def test_page():
+    return render_template('trade-ideas.html')
 
 # Main execution
 if __name__ == '__main__':
