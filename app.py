@@ -13,18 +13,6 @@ def about():
 def contact():
     return render_template('contact.html')
 
-@app.route('/market-insights')
-def market_insights():
-    return render_template('market-insights.html')
-
-@app.route('/services')
-def services():
-    return render_template('services.html')
-
-@app.route('/trade-ideas')
-def trade_ideas():
-    return render_template('trade-ideas.html')
-
 @app.route('/test')
 def test_page():
     return render_template('test.html')
