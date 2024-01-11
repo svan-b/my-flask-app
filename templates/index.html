@@ -1,19 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-{% include 'head.html' %}
-<body>
+{% extends 'base.html' %}
 
-<!-- Header with Background Image -->
-<header class="bgimg">
-  <h1>Welcome to Market Multiply</h1>
-  <!-- You can add more content here if needed -->
-</header>
+{% block title %}Home - Market Multiply{% endblock %}
 
-<main>
-  <h2>This is the Home Page</h2>
-  <p>Welcome to Market Multiply!</p>
-</main>
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Market Multiply</h1>
+    <p class="lead">Innovative financial solutions at your fingertips.</p>
+    <hr class="my-4">
+    <p>Explore our services and insights.</p>
+    <a class="btn btn-primary btn-lg" href="/about" role="button">Learn More</a>
+</div>
 
-</body>
-</html>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <!-- Card Content -->
+            </div>
+        </div>
+        <!-- More cards or content columns -->
+    </div>
+</div>
+{% endblock %}
 
