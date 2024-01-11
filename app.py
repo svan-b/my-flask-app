@@ -14,15 +14,15 @@ def contact():
     return render_template('contact.html')
 
 @app.route('/market-update')
-def test_page():
+def market-update():
     return render_template('market-update.html')
 
 @app.route('/services')
-def test_page():
+def services():
     return render_template('services.html')
 
 @app.route('/trade-ideas')
-def test_page():
+def trades-ideas():
     return render_template('trade-ideas.html')
 
 # Main execution
