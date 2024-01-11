@@ -13,7 +13,6 @@ def about():
 def contact():
     return render_template('contact.html')
 
-# Add routes for other pages here
 @app.route('/market-insights')
 def market_insights():
     return render_template('market-insights.html')
