@@ -13,18 +13,13 @@ def about():
 def contact():
     return render_template('contact.html')
 
-@app.route('/market-update')
-def market-update():
-    return render_template('market-update.html')
-
-@app.route('/services')
-def services():
-    return render_template('services.html')
-
-@app.route('/trade-ideas')
-def trades-ideas():
-    return render_template('trade-ideas.html')
-
 # Main execution
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
+    
+
+
+
+
+
