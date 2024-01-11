@@ -25,6 +25,10 @@ def services():
 def trade_ideas():
     return render_template('trade-ideas.html')
 
+@app.route('/test')
+def test_page():
+    return render_template('test.html')
+
 # Main execution
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
