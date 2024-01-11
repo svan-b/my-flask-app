@@ -11,22 +11,18 @@ body, h1, h2, p, html {
     font-family: 'Roboto', sans-serif;
     text-align: center;
     color: #333;
-    background-color: #f4f4f4;
+    background-color: #eaeaea; /* Light grey background */
 }
 
 header {
-    background-color: #1a1a1a;
+    background-color: #1a1a1a; /* Dark header background */
     color: white;
     padding: 40px 0;
-    min-height: 60vh;
+    min-height: 20vh; /* Reduced height */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url('https://as1.ftcdn.net/v2/jpg/03/07/44/12/1000_F_307441238_BbbfCAgioP0WXn1Hapj8w8GPl5JB4ea6.jpg');
 }
 
 header h1 {
@@ -36,7 +32,7 @@ header h1 {
 
 nav {
     width: 100%;
-    background-color: #333;
+    background-color: #333; /* Dark navigation bar */
 }
 
 nav ul {
@@ -47,7 +43,7 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0 20px; /* More space between nav items */
 }
 
 nav a {
@@ -57,12 +53,13 @@ nav a {
 }
 
 nav a:hover {
-    color: #04AA6D;
+    color: #04AA6D; /* Green color for hover effect */
 }
 
 main {
     padding: 40px;
-    text-align: left; /* Align text to left for better readability in content sections */
+    text-align: left; /* Left align for main content */
+    background-color: #eaeaea; /* Matching the body background */
 }
 
 footer {
@@ -78,5 +75,9 @@ footer {
 @media (max-width: 600px) {
     nav ul {
         flex-direction: column;
+    }
+
+    header h1 {
+        font-size: 40px; /* Smaller font size for mobile */
     }
 }
