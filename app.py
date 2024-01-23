@@ -26,9 +26,13 @@ def about():
 def contact():
     return render_template('contact.html')
 
+@app.route('/test')
+def test():
+    return 'Flask is working!'
+
 if __name__ == '__main__':
-    app.config['TEMPLATES_AUTO_RELOAD'] = True
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5001)  # Runs the application on port 5001
+
 
 
 

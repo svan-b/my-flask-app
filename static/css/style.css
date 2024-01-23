@@ -1,0 +1,121 @@
+
+/* Custom styles for Market Multiply */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Light background */
+    color: #333; /* Darker text for contrast */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #004466; /* Dark blue to signify trust and professionalism */
+    border-bottom: 3px solid #007bff;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #fff; /* White for contrast */
+}
+
+.nav-link {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #222;
+    color: #ddd;
+    padding: 20px 0;
+}
+
+/* Container Padding */
+.container {
+    padding-top: 30px;
+}
+
+/* Jumbotron for Main Banner */
+.jumbotron {
+    background-color: #e9ecef;
+    border-radius: 0.5rem;
+    padding: 40px 20px;
+    text-align: center;
+    background-image: url('https://source.unsplash.com/random/1920x1080?financial'); /* Financial themed image */
+    background-size: cover;
+    color: #fff;
+}
+
+.jumbotron h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.jumbotron p {
+    font-size: 1.2rem;
+}
+
+/* Projects Section */
+.project-card {
+    transition: transform .2s; /* Animation for hover effect */
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* About Section */
+.about-section {
+    background-color: #f2f2f2;
+    padding: 40px 20px;
+}
+
+.about-section h3 {
+    font-size: 2rem;
+    color: #004466;
+}
+
+/* Contact Section */
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.contact-form button {
+    background-color: #004466;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #007bff;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar {
+        text-align: center;
+    }
+
+    .jumbotron h1 {
+        font-size: 2rem;
+    }
+
+    .jumbotron p {
+        font-size: 1rem;
+    }
+}
