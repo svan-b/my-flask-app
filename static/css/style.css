@@ -81,3 +81,45 @@ body {
 .bio-section p {
     font-size: 0.9rem;
 }
+
+
+/* Existing styles... */
+
+/* Service Section Styles */
+.service-section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.service-image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    min-height: 300px;
+}
+
+.service-description {
+    flex: 2;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.service-description h3 {
+    color: #004466;
+    font-size: 1.8rem;
+}
+
+.service-description p {
+    color: #555;
+    font-size: 1rem;
+    margin-top: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-section {
+        flex-direction: column;
+    }
+}
