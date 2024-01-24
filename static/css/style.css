@@ -1,10 +1,4 @@
-
 /* Custom styles for Market Multiply */
-
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
-
-/* Custom styles for Market Multiply */
-
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
 
 body {
@@ -24,6 +18,9 @@ body {
 .navbar-brand {
     font-weight: bold;
     color: #fff;
+    text-align: center;
+    display: block;
+    width: 100%;
 }
 
 .nav-link {
@@ -39,8 +36,7 @@ body {
 
 .container {
     padding-top: 30px;
-    width: 90%; /* Wider content area */
-    max-width: 1200px; /* Maximum width */
+    max-width: 1100px; /* Adjusted content width */
     margin: auto;
 }
 
@@ -72,6 +68,8 @@ body {
     background-color: #f2f2f2;
     padding: 40px 20px;
     color: #555;
+    display: flex;
+    justify-content: space-between; /* Side-by-side bio blocks */
 }
 
 .bio-section h2 {
@@ -81,29 +79,44 @@ body {
 
 .bio-section p {
     font-size: 0.9rem;
+    width: 48%; /* Adjusted for side-by-side layout */
 }
 
-/* New styles for service layout */
-.service-section {
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px;
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
 }
 
-.service-image {
-    flex: 0 0 40%; /* Fixed width for the image */
-    max-width: 40%;
-    margin-right: 20px;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
 }
 
-.service-text {
-    flex: 1; /* Remaining space for text */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .service-section {
+    .bio-section {
         flex-direction: column;
+    }
+
+    .bio-section p {
+        width: 100%; /* Adjust for mobile layout */
     }
 }

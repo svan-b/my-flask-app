@@ -23,8 +23,14 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ url_for('index') }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('services') }}">Services</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{ url_for('services') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#financial-consulting">Financial Consulting</a>
+                            <a class="dropdown-item" href="#investment-advice">Investment Advice</a>
+                            <a class="dropdown-item" href="#market-analysis">Market Analysis</a>
+                            <a class="dropdown-item" href="#audio-services">Audio Services</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('insights') }}">Market Insights</a>

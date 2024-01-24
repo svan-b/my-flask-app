@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4" style="max-width: 90%;">
+<div class="container mt-4">
     <div class="intro-text">
         <h1 class="display-4">Market Multiply</h1>
         <p class="lead">Your trusted partner in financial markets and consulting.</p>
@@ -12,27 +12,20 @@
         <a class="btn btn-primary btn-lg" href="{{ url_for('services') }}" role="button">Learn More</a>
     </div>
 
-    <div class="bio-section">
-        <h2>Scott Van Bolhuis, CFA - Founder and Capital Markets Advisor</h2>
-        <p>Bringing a wealth of experience from leading financial institutions like BMO Capital Markets and AIMCo, complemented by his strategic role in venture capital at APEX Capital, an early-stage VC firm. At APEX, Scott was instrumental in fundraising activities and constructing the fund model, showcasing his expertise in venture capital operations.
+    <div class="row">
+        <div class="col-lg-6 bio-section">
+            <h2>Scott Van Bolhuis, CFA - Founder and Capital Markets Advisor</h2>
+            <p>Bringing a wealth of experience from leading financial institutions like BMO Capital Markets and AIMCo, complemented by his strategic role in venture capital at APEX Capital, an early-stage VC firm. At APEX, Scott was instrumental in fundraising activities and constructing the fund model, showcasing his expertise in venture capital operations.
 
-        His technical acumen in financial modeling and data analysis is underpinned by proficiency in Python, VBA, SQL, and various financial software. Scott's career highlights include equity research, financial analysis, and due diligence across multiple sectors, making him a valuable advisor for CFOs in industries like biotech, oil and gas, mining, and technology.
-        
-        Scott’s blend of experience in top-tier financial institutions and his skill in leveraging technology for financial solutions position him as an exceptional consultant for financial and capital market challenges.</p>
-    </div>
-
-    <!-- Dropdown for Services -->
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Services
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#financial-consulting">Financial Consulting</a>
-            <a class="dropdown-item" href="#investment-advice">Investment Advice</a>
-            <a class="dropdown-item" href="#market-analysis">Market Analysis</a>
-            <a class="dropdown-item" href="#audio-services">Audio Services</a>
+                His technical acumen in financial modeling and data analysis is underpinned by proficiency in Python, VBA, SQL, and various financial software. Scott's career highlights include equity research, financial analysis, and due diligence across multiple sectors, making him a valuable advisor for CFOs in industries like biotech, oil and gas, mining, and technology.
+                
+                Scott’s blend of experience in top-tier financial institutions and his skill in leveraging technology for financial solutions position him as an exceptional consultant for financial and capital market challenges</p>
+        </div>
+        <div class="col-lg-6 bio-section">
+            <p>His technical acumen in financial modeling and data analysis is underpinned by proficiency in Python, VBA, SQL, and various financial software. Scott's career highlights include equity research, financial analysis, and due diligence across multiple sectors, making him a valuable advisor for CFOs in industries like biotech, oil and gas, mining, and technology.
+                
+                Scott’s blend of experience in top-tier financial institutions and his skill in leveraging technology for financial solutions position him as an exceptional consultant for financial and capital market challenges</p>
         </div>
     </div>
-
 </div>
 {% endblock %}
