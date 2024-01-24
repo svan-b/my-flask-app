@@ -3,24 +3,27 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
 
+/* Custom styles for Market Multiply */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+
 body {
     font-family: 'Oswald', sans-serif;
-    background-color: #f8f9fa; /* Light background */
-    color: #333; /* Darker text for contrast */
+    background-color: #f8f9fa;
+    color: #333;
     margin: 0;
     padding: 0;
-    text-transform: uppercase; /* Consistent text style */
+    text-transform: uppercase;
 }
 
-/* Navigation Bar */
 .navbar {
-    background-color: #004466; /* Dark blue to signify trust and professionalism */
+    background-color: #004466;
     border-bottom: 3px solid hwb(211 0% 0%);
 }
 
 .navbar-brand {
     font-weight: bold;
-    color: #fff; /* White for contrast */
+    color: #fff;
 }
 
 .nav-link {
@@ -28,34 +31,33 @@ body {
     font-weight: 500;
 }
 
-/* Footer Styling */
 .footer {
     background-color: #222;
     color: #ddd;
     padding: 20px 0;
 }
 
-/* Container Padding */
 .container {
     padding-top: 30px;
+    width: 90%; /* Wider content area */
+    max-width: 1200px; /* Maximum width */
+    margin: auto;
 }
 
-/* Jumbotron for Main Banner */
 .jumbotron {
     background-color: #e9ecef;
     border-radius: 0.5rem;
     padding: 60px 30px;
     text-align: center;
-    background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2t5c2NyYXBlcnxlbnwwfHwwfHx8MA%3D%3D'); /* Financial themed image */
+    background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2t5c2NyYXBlcnxlbnwwfHwwfHx8MA%3D%3D');
     background-size: cover;
-    color: #000; /* Black text for legibility */
+    color: #000;
 }
 
 .jumbotron p {
     font-size: 1.2rem;
 }
 
-/* Intro Text Section */
 .intro-text h1 {
     font-size: 3rem;
     font-weight: bold;
@@ -66,11 +68,10 @@ body {
     font-size: 1.5rem;
 }
 
-/* Bio Section */
 .bio-section {
     background-color: #f2f2f2;
     padding: 40px 20px;
-    color: #555; /* Grey text for subtlety */
+    color: #555;
 }
 
 .bio-section h2 {
@@ -82,40 +83,23 @@ body {
     font-size: 0.9rem;
 }
 
-
-/* Existing styles... */
-
-/* Service Section Styles */
+/* New styles for service layout */
 .service-section {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     margin-bottom: 40px;
 }
 
 .service-image {
-    flex: 1;
-    background-size: cover;
-    background-position: center;
-    min-height: 300px;
+    flex: 0 0 40%; /* Fixed width for the image */
+    max-width: 40%;
+    margin-right: 20px;
 }
 
-.service-description {
-    flex: 2;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+.service-text {
+    flex: 1; /* Remaining space for text */
 }
 
-.service-description h3 {
-    color: #004466;
-    font-size: 1.8rem;
-}
-
-.service-description p {
-    color: #555;
-    font-size: 1rem;
-    margin-top: 15px;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
