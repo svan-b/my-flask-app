@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
@@ -45,6 +45,13 @@ def audio_services():
 @app.route('/test')
 def test():
     return 'Flask is working!'
+
+@app.route('/subscribe', methods=['POST'])
+def subscribe():
+    email = request.json.get('email')
+    # Add logic to save email to database or send to email service
+    return jsonify({'message': 'Thank you for subscribing!'})
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)  # Runs the application on port 5001
