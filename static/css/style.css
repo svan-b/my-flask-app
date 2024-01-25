@@ -74,10 +74,11 @@ body {
 }
 
 .bio-section p {
+    width: 100%; /* Adjust for mobile layout */
     font-size: 1.2rem;
     text-align: justify;
+    text-transform: lowercase; /* Changed to lowercase */
 }
-
 /* Dropdown Menu */
 .dropdown {
     position: relative;
@@ -112,10 +113,5 @@ body {
         flex-direction: column;
     }
 
-    .bio-section p {
-        width: 100%; /* Adjust for mobile layout */
-        font-size: 1.2rem;
-        text-align: justify;
-        text-transform: lowercase; /* Changed to lowercase */
-    }
+
 }
