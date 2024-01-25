@@ -10,9 +10,9 @@ def index():
 def services():
     return render_template('services.html')
 
-@app.route('/insights')
-def insights():
-    return render_template('insights.html')
+@app.route('/newsletter')
+def newsletter():
+    return render_template('newsletter.html')
 
 @app.route('/consultation')
 def consultation():
