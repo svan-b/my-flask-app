@@ -1,6 +1,16 @@
 from flask import Flask, render_template, request, jsonify
+from flask_mysqldb import MySQL
 
 app = Flask(__name__)
+
+# MySQL configurations
+app.config['MYSQL_HOST'] = 'myfinancedb.cn4w40eu86mu.us-east-2.rds.amazonaws.com'
+app.config['MYSQL_USER'] = 'admin'
+app.config['MYSQL_PASSWORD'] = 'BenjiLouie'  # Use environment variables in production
+app.config['MYSQL_DB'] = 'myfinancedb'  # Set to your DB identifier
+app.config['MYSQL_PORT'] = 3306
+
+mysql = MySQL(app)
 
 @app.route('/')
 def index():
@@ -49,7 +59,10 @@ def test():
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
     email = request.json.get('email')
-    # Add logic to save email to database or send to email service
+    cur = mysql.connection.cursor()
+    cur.execute("INSERT INTO subscribers(email) VALUES (%s)", [email])
+    mysql.connection.commit()
+    cur.close()
     return jsonify({'message': 'Thank you for subscribing!'})
 
 
