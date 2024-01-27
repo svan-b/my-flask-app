@@ -51,7 +51,7 @@ body {
 }
 
 .jumbotron {
-    background-color: #e9ecef;
+    background-color: rgba(233, 236, 239, 0.8); /* Translucent background */
     border-radius: 0.5rem;
     padding: 60px 30px;
     text-align: center;
@@ -75,11 +75,23 @@ body {
 }
 
 .bio-section {
+    display: flex;
+    justify-content: space-between; /* Adds space between bio and white space */
     background-color: #f2f2f2;
     padding: 40px 20px;
     color: #555;
     margin-bottom: 30px;
 }
+
+.bio-section .bio-content {
+    flex-basis: 60%; /* Adjusts the width of the bio content */
+    font-size: 1rem; /* Smaller font size */
+}
+
+.bio-section .white-space {
+    flex-basis: 40%; /* Adjusts the width of the white space */
+}
+
 
 .bio-section h2 {
     font-size: 2rem;
@@ -136,5 +148,15 @@ body {
         display: block;
         width: 100%;
         text-align: center;
+    }
+
+    
+    .bio-section {
+        flex-direction: column;
+    }
+
+    .bio-section .bio-content,
+    .bio-section .white-space {
+        flex-basis: 100%;
     }
 }
