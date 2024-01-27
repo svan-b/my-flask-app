@@ -13,7 +13,7 @@ body {
 
 .navbar {
     background-color: #000956; /* Dark blue background */
-    border-bottom: 3px solid #007bff; /* Blue border */
+    border-bottom: 3px solid #505050ce; /* Blue border */
     position: fixed; /* Fixed position */
     width: 100%; /* Full width */
     top: 0; /* Align to the top */
@@ -31,7 +31,7 @@ body {
 }
 
 .navbar-dark .navbar-nav .btn-outline-primary:hover {
-    color: #004466; /* Dark blue text on hover */
+    color: #000000; /* Dark blue text on hover */
     background-color: #fff; /* White background on hover */
 }
 
@@ -77,7 +77,7 @@ body {
 .intro-text h1 {
     font-size: 3rem;
     font-weight: bold;
-    color: #004466;
+    color: #000000;
 }
 
 .intro-text p {
@@ -105,7 +105,7 @@ body {
 
 .bio-section h2 {
     font-size: 1.5rem;
-    color: #004466;
+    color: #000000;
 }
 
 .bio-section p {
@@ -151,7 +151,7 @@ body {
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E..."); /* Ensure this is correctly set */
     }
     .navbar-collapse {
-        background-color: #004466;
+        background-color: #434343;
     }
     /* Additional styles for mobile view */
     .nav-item, .nav-link, .btn {
