@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, flash, redirect, request, jsonify
 import traceback
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate  # Import Flask-Migrate
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mysqldb import MySQL
@@ -21,6 +22,7 @@ mysql = MySQL(app)
 app.config['SECRET_KEY'] = 'BenjiLouie'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)  # Initialize Flask-Migrate
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -143,6 +145,7 @@ def internal_error(error):
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
 
 
 
