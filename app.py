@@ -77,10 +77,10 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route("/member")
+@app.route("/client")
 @login_required
-def member():
-    return render_template('member.html', title='Member Page')
+def client():
+    return render_template('client.html', title='Client Portal')
 
 # Existing routes
 @app.route('/')
