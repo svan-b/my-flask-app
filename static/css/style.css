@@ -123,12 +123,18 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar-toggler {
-        border-color: #fff; /* White border for toggler */
+        border-color: #fff;
     }
-    .navbar-dark .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml, ..."); /* Adjust as needed */
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E..."); /* Ensure this is correctly set */
     }
     .navbar-collapse {
-        background-color: #004466; /* Dark blue background */
+        background-color: #004466;
+    }
+    /* Additional styles for mobile view */
+    .nav-item, .nav-link, .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
     }
 }
