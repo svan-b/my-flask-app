@@ -104,13 +104,13 @@ body {
 
 
 .bio-section h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #004466;
 }
 
 .bio-section p {
     width: 100%; /* Adjust for mobile layout */
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     text-align: justify;
 
 }

@@ -1,9 +1,10 @@
-from flask import Flask, render_template, url_for, flash, redirect, request, jsonify
+from flask import Flask, render_template, url_for, flash, redirect, request, jsonify, traceback
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mysqldb import MySQL
 from forms import LoginForm, RegistrationForm
+import traceback
 
 app = Flask(__name__)
 
@@ -135,5 +136,14 @@ def subscribe():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    trace = traceback.format_exc()
+    app.logger.error('Server Error: %s', trace)
+    # You might want to return a custom error page here
+    return "500 Internal Server Error", 500
+
 
 
