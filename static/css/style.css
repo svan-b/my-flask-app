@@ -11,8 +11,22 @@ body {
 }
 
 .navbar {
-    background-color: #004466;
-    border-bottom: 3px solid #007bff;
+    background-color: #004466; /* Dark blue background */
+    border-bottom: 3px solid #007bff; /* Blue border */
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff; /* White text for nav items */
+}
+
+.navbar-dark .navbar-nav .btn-outline-primary {
+    color: #fff; /* White text for buttons */
+    border-color: #fff; /* White border for buttons */
+}
+
+.navbar-dark .navbar-nav .btn-outline-primary:hover {
+    color: #004466; /* Dark blue text on hover */
+    background-color: #fff; /* White background on hover */
 }
 
 .navbar-brand {
@@ -108,9 +122,13 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .bio-section {
-        flex-direction: column;
+    .navbar-toggler {
+        border-color: #fff; /* White border for toggler */
     }
-
-
+    .navbar-dark .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml, ..."); /* Adjust as needed */
+    }
+    .navbar-collapse {
+        background-color: #004466; /* Dark blue background */
+    }
 }
