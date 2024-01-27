@@ -14,4 +14,4 @@ Werkzeug==3.0.1
 flask_sqlalchemy
 flask_login
 flask_mysqldb
-flash_wtf
+flask_wtf
