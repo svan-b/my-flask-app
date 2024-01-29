@@ -170,3 +170,27 @@ body {
         flex-basis: 100%;
     }
 }
+
+/* Stock Ticker Styles */
+.ticker {
+    background-color: #002761; /* Match navbar color */
+    color: #fff;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+
+#stock-list {
+    display: flex;
+    animation: move 20s linear infinite;
+    padding: 5px 0;
+}
+
+@keyframes move {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+#stock-list li {
+    list-style-type: none;
+    padding: 0 15px;
+}

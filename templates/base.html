@@ -97,6 +97,10 @@
         </div>
     </div>
 
+    <div id="stock-ticker" class="ticker">
+        <ul id="stock-list"></ul>
+    </div>
+
     <!-- Main Content Block -->
     {% block content %}{% endblock %}
 
@@ -114,5 +118,42 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Custom JavaScript -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const stockList = document.getElementById('stock-list');
+        const stockSymbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'FB', 'BRK.B', 'JPM', 'V', 'TSLA', 'JNJ']; // Example stock symbols
+
+        // Function to fetch stock data for a symbol
+        async function fetchStockData(symbol) {
+            try {
+                const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=QKTPR4VSJPW7QY6A`);
+                const data = await response.json();
+                updateTicker(symbol, data['Global Quote']['05. price']);
+            } catch (error) {
+                console.error('Error fetching stock data for', symbol, ':', error);
+            }
+        }
+
+        // Function to update the ticker with fetched data
+        function updateTicker(symbol, price) {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${symbol}: ${price}`;
+            stockList.appendChild(listItem);
+        }
+
+        // Fetch data for each stock symbol
+        stockSymbols.forEach(symbol => fetchStockData(symbol));
+        
+        // Optional: Refresh data every 5 minutes
+        setInterval(() => {
+            stockList.innerHTML = ''; // Clear existing data
+            stockSymbols.forEach(symbol => fetchStockData(symbol));
+        }, 300000);
+    });
+</script>
+
 </body>
 </html>
