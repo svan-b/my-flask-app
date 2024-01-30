@@ -181,10 +181,11 @@ body {
     border: none; /* No border */
     position: relative;
     top: -5px; /* Adjust as needed to remove space */
+    white-space: nowrap; /* Ensure ticker items stay in a single line */
 }
 
 #stock-list {
-    display: flex;
+    display: inline-flex; /* Change to inline-flex for scrolling */
     align-items: center; /* Center items vertically */
     animation: move 20s linear infinite;
     margin: 0;
@@ -194,6 +195,19 @@ body {
 #stock-list li {
     list-style-type: none;
     padding: 0 15px;
+}
+
+@keyframes move {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.positive-change {
+    color: green; /* Green color for positive changes */
+}
+
+.negative-change {
+    color: red; /* Red color for negative changes */
 }
 
 

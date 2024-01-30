@@ -25,7 +25,7 @@ document.getElementById('subscribeForm').addEventListener('submit', function(eve
 // Ticker list
 document.addEventListener('DOMContentLoaded', () => {
     const stockList = document.getElementById('stock-list');
-    const stockSymbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'FB', 'BRK.B', 'JPM', 'V', 'TSLA', 'JNJ']; // Example stock symbols
+    const stockSymbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'FB', 'BRK.B', 'JPM', 'V', 'TSLA', 'JNJ', /* Add the Magnificent 7 stocks' symbols here */];
 
     async function fetchStockData(symbol) {
         try {
@@ -33,16 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             const percentChange = data['Global Quote']['10. change percent'];
             if (percentChange) {
-                updateTicker(symbol, percentChange);
+                const isPositive = percentChange.includes('+');
+                updateTicker(symbol, percentChange, isPositive);
             }
         } catch (error) {
             console.error('Error fetching stock data for', symbol, ':', error);
         }
     }
 
-    function updateTicker(symbol, percentChange) {
+    function updateTicker(symbol, percentChange, isPositive) {
         const listItem = document.createElement('li');
         listItem.textContent = `${symbol}: ${percentChange}`;
+        listItem.className = isPositive ? 'positive-change' : 'negative-change';
         stockList.appendChild(listItem);
     }
 
@@ -50,5 +52,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(() => {
         stockList.innerHTML = '';
         stockSymbols.forEach(symbol => fetchStockData(symbol));
-    }, 300000);
+    }, 300000)/* 15 minutes */;
 });
