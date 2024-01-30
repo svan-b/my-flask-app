@@ -25,28 +25,30 @@ document.getElementById('subscribeForm').addEventListener('submit', function(eve
 // Ticker list
 document.addEventListener('DOMContentLoaded', () => {
     const stockList = document.getElementById('stock-list');
+    const stockSymbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'FB', 'BRK.B', 'JPM', 'V', 'TSLA', 'JNJ']; // Example stock symbols
 
-    // Function to fetch stock data
-    async function fetchStockData() {
+    async function fetchStockData(symbol) {
         try {
-            const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=YOUR_API_KEY`);
+            const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=QKTPR4VSJPW7QY6A`);
             const data = await response.json();
-            updateTicker(data);
+            const percentChange = data['Global Quote']['10. change percent'];
+            if (percentChange) {
+                updateTicker(symbol, percentChange);
+            }
         } catch (error) {
-            console.error('Error fetching stock data:', error);
+            console.error('Error fetching stock data for', symbol, ':', error);
         }
     }
 
-    // Function to update the ticker with fetched data
-    function updateTicker(data) {
-        // Example processing, adapt based on actual API response
-        for (const symbol in data['Global Quote']) {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${symbol}: ${data['Global Quote'][symbol]['05. price']}`;
-            stockList.appendChild(listItem);
-        }
+    function updateTicker(symbol, percentChange) {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${symbol}: ${percentChange}`;
+        stockList.appendChild(listItem);
     }
 
-    fetchStockData();
-    setInterval(fetchStockData, 900000); // Fetch new data every 15 minutes
+    stockSymbols.forEach(symbol => fetchStockData(symbol));
+    setInterval(() => {
+        stockList.innerHTML = '';
+        stockSymbols.forEach(symbol => fetchStockData(symbol));
+    }, 300000);
 });

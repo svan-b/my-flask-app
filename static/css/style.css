@@ -173,24 +173,27 @@ body {
 
 /* Stock Ticker Styles */
 .ticker {
-    background-color: #002761; /* Match navbar color */
+    background-color: #000; /* Black background */
     color: #fff;
     overflow: hidden;
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* Reduced font size */
+    height: 25px; /* Smaller height */
+    border: none; /* No border */
+    position: relative;
+    top: -5px; /* Adjust as needed to remove space */
 }
 
 #stock-list {
     display: flex;
+    align-items: center; /* Center items vertically */
     animation: move 20s linear infinite;
-    padding: 5px 0;
-}
-
-@keyframes move {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    margin: 0;
+    padding: 0;
 }
 
 #stock-list li {
     list-style-type: none;
     padding: 0 15px;
 }
+
+
