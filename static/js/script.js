@@ -25,12 +25,13 @@ document.getElementById('subscribeForm').addEventListener('submit', function(eve
 // Ticker list
 document.addEventListener('DOMContentLoaded', () => {
     const stockList = document.getElementById('stock-list');
-    const stockSymbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'FB', 'BRK.B', 'JPM', 'V', 'TSLA', 'JNJ']; // Add other stock symbols as needed
 
     async function fetchStockData(symbol) {
+        console.log(`Fetching data for ${symbol}`); // Debugging log
         try {
             const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=QKTPR4VSJPW7QY6A`);
             const data = await response.json();
+            console.log('API response:', data); // Debugging log
             if (data['Global Quote'] && data['Global Quote']['08. previous close']) {
                 const closePrice = data['Global Quote']['08. previous close'];
                 updateTicker(symbol, closePrice);
@@ -48,12 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
         stockList.appendChild(listItem);
     }
 
-    stockSymbols.forEach(symbol => fetchStockData(symbol));
-    setInterval(() => {
-        stockList.innerHTML = ''; // Clear existing items
-        stockSymbols.forEach(symbol => fetchStockData(symbol)); // Refresh data
-    }, 300000); // Refresh interval: 5 minutes
+    // Test with a single stock symbol
+    fetchStockData('AAPL');
 });
+
 
 
 
