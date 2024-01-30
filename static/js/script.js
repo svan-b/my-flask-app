@@ -27,22 +27,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const stockList = document.getElementById('stock-list');
 
     async function fetchStockData(symbol) {
-        console.log(`Fetching data for ${symbol}`);
         try {
             const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=QKTPR4VSJPW7QY6A`);
             const data = await response.json();
-            console.log('API response for ' + symbol + ':', data); // Detailed log
 
-            if (data && data['Global Quote']) {
-                console.log('Global Quote for ' + symbol + ':', data['Global Quote']);
-                if (data['Global Quote']['08. previous close']) {
-                    const closePrice = data['Global Quote']['08. previous close'];
-                    updateTicker(symbol, closePrice);
-                } else {
-                    console.log("Previous close price not available for", symbol);
-                }
+            if (data['Note']) {
+                console.log(data['Note']); // Log the rate limit note
+                // Optionally, show this message on the webpage
+            } else if (data['Global Quote'] && data['Global Quote']['08. previous close']) {
+                const closePrice = data['Global Quote']['08. previous close'];
+                updateTicker(symbol, closePrice);
             } else {
-                console.log("Global Quote data missing for", symbol);
+                console.log("Data unavailable for", symbol);
             }
         } catch (error) {
             console.error('Error fetching stock data for', symbol, ':', error);
@@ -55,9 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
         stockList.appendChild(listItem);
     }
 
-    // Test with a single stock symbol
-    fetchStockData('AAPL');
+    fetchStockData('AAPL'); // Test with a single stock symbol
 });
+
 
 
 
