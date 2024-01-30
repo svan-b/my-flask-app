@@ -31,10 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=QKTPR4VSJPW7QY6A`);
             const data = await response.json();
-            if (data['Global Quote'] && data['Global Quote']['10. change percent']) {
-                const percentChange = data['Global Quote']['10. change percent'];
-                const isPositive = percentChange.includes('+');
-                updateTicker(symbol, percentChange, isPositive);
+            if (data['Global Quote'] && data['Global Quote']['08. previous close']) {
+                const closePrice = data['Global Quote']['08. previous close'];
+                updateTicker(symbol, closePrice);
             } else {
                 console.log("Incomplete or missing data for", symbol); // Log for missing data
             }
@@ -43,10 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function updateTicker(symbol, percentChange, isPositive) {
+    function updateTicker(symbol, closePrice) {
         const listItem = document.createElement('li');
-        listItem.textContent = `${symbol}: ${percentChange}`;
-        listItem.className = isPositive ? 'positive-change' : 'negative-change';
+        listItem.textContent = `${symbol}: ${closePrice}`;
         stockList.appendChild(listItem);
     }
 
