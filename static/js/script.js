@@ -31,14 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=QKTPR4VSJPW7QY6A`);
             const data = await response.json();
-            console.log(symbol, "response data:", data); // Debugging line
-            const percentChange = data['Global Quote']['10. change percent'];
-            console.log(symbol, "percent change:", percentChange); // Debugging line
-            if (percentChange) {
+            if (data && data['Global Quote'] && data['Global Quote']['10. change percent']) {
+                const percentChange = data['Global Quote']['10. change percent'];
                 const isPositive = percentChange.includes('+');
                 updateTicker(symbol, percentChange, isPositive);
             } else {
-                console.log("No percent change for", symbol); // Debugging line
+                console.log("Incomplete or missing data for", symbol);
+                // Optionally handle the case where data is incomplete or missing
             }
         } catch (error) {
             console.error('Error fetching stock data for', symbol, ':', error);
@@ -58,3 +57,4 @@ document.addEventListener('DOMContentLoaded', () => {
         stockSymbols.forEach(symbol => fetchStockData(symbol));
     }, 300000);
 });
+
