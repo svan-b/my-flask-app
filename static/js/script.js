@@ -24,17 +24,16 @@ document.getElementById('subscribeForm').addEventListener('submit', function(eve
 
 // Ticker list
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Script loaded"); // Debugging line
     const stockList = document.getElementById('stock-list');
-    console.log("Stock List Element:", stockList); // Debugging line
     const stockSymbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'FB', 'BRK.B', 'JPM', 'V', 'TSLA', 'JNJ'];
 
     async function fetchStockData(symbol) {
         try {
             const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=QKTPR4VSJPW7QY6A`);
             const data = await response.json();
-            console.log("Data for", symbol, ":", data); // Debugging line
+            console.log(symbol, "response data:", data); // Debugging line
             const percentChange = data['Global Quote']['10. change percent'];
+            console.log(symbol, "percent change:", percentChange); // Debugging line
             if (percentChange) {
                 const isPositive = percentChange.includes('+');
                 updateTicker(symbol, percentChange, isPositive);
