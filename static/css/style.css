@@ -176,25 +176,14 @@ body {
     background-color: #000; /* Black background */
     color: #fff;
     overflow: hidden;
-    font-size: 0.8rem; /* Reduced font size */
-    height: 25px; /* Smaller height */
-    border: none; /* No border */
-    position: relative;
-    top: -5px; /* Adjust as needed to remove space */
-    white-space: nowrap; /* Ensure ticker items stay in a single line */
+    white-space: nowrap; /* Keep ticker in one line */
+    font-size: 0.8rem; /* Adjust font size as needed */
+    height: 25px; /* Adjust height as needed */
 }
 
 #stock-list {
-    display: inline-flex; /* Change to inline-flex for scrolling */
-    align-items: center; /* Center items vertically */
-    animation: move 20s linear infinite;
-    margin: 0;
-    padding: 0;
-}
-
-#stock-list li {
-    list-style-type: none;
-    padding: 0 15px;
+    display: inline-flex; /* Inline-flex for horizontal layout */
+    animation: move 20s linear infinite; /* Scrolling animation */
 }
 
 @keyframes move {

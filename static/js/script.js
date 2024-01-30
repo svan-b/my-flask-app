@@ -25,19 +25,18 @@ document.getElementById('subscribeForm').addEventListener('submit', function(eve
 // Ticker list
 document.addEventListener('DOMContentLoaded', () => {
     const stockList = document.getElementById('stock-list');
-    const stockSymbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'FB', 'BRK.B', 'JPM', 'V', 'TSLA', 'JNJ'];
+    const stockSymbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'FB', 'BRK.B', 'JPM', 'V', 'TSLA', 'JNJ']; // Add other stock symbols as needed
 
     async function fetchStockData(symbol) {
         try {
             const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=QKTPR4VSJPW7QY6A`);
             const data = await response.json();
-            if (data && data['Global Quote'] && data['Global Quote']['10. change percent']) {
+            if (data['Global Quote'] && data['Global Quote']['10. change percent']) {
                 const percentChange = data['Global Quote']['10. change percent'];
                 const isPositive = percentChange.includes('+');
                 updateTicker(symbol, percentChange, isPositive);
             } else {
-                console.log("Incomplete or missing data for", symbol);
-                // Optionally handle the case where data is incomplete or missing
+                console.log("Incomplete or missing data for", symbol); // Log for missing data
             }
         } catch (error) {
             console.error('Error fetching stock data for', symbol, ':', error);
@@ -53,8 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     stockSymbols.forEach(symbol => fetchStockData(symbol));
     setInterval(() => {
-        stockList.innerHTML = '';
-        stockSymbols.forEach(symbol => fetchStockData(symbol));
-    }, 300000);
+        stockList.innerHTML = ''; // Clear existing items
+        stockSymbols.forEach(symbol => fetchStockData(symbol)); // Refresh data
+    }, 300000); // Refresh interval: 5 minutes
 });
+
 
