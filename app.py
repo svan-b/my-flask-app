@@ -85,18 +85,19 @@ def logout():
 @login_required
 def download_stemcell():
     try:
-        # Correct path to the directory where the file is located
+        # Set the correct relative path to the directory where the file is located
         directory = os.path.join(app.root_path, 'static', 'files')
         filename = 'STEMCELL_consolidated.xlsm'
         
-        # Make sure the file exists
-        if not os.path.isfile(os.path.join(directory, filename)):
-            raise FileNotFoundError(f"File {filename} not found in directory {directory}")
+        # Verify the file exists in the specified directory
+        file_path = os.path.join(directory, filename)
+        if not os.path.isfile(file_path):
+            raise FileNotFoundError(f"File {filename} not found at {file_path}")
 
         return send_from_directory(directory=directory, filename=filename, as_attachment=True)
     except Exception as e:
         app.logger.error(f"Error downloading file: {e}")
-        return "Error downloading file", 500
+        return f"Error downloading file: {e}", 500
 
 
 
