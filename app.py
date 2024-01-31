@@ -79,7 +79,7 @@ def logout():
     return redirect(url_for('index'))
 
 
-@@app.route('/download/stemcell')
+@app.route('/download/stemcell')
 @login_required
 def download_stemcell():
     directory = os.path.join(app.root_path, 'static/files')
@@ -87,6 +87,7 @@ def download_stemcell():
     return send_from_directory(directory=directory,
                                filename=filename,
                                as_attachment=True)
+
 
 
 # Existing routes
