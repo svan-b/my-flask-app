@@ -25,7 +25,7 @@ document.getElementById('subscribeForm').addEventListener('submit', function(eve
 // Ticker list
 document.addEventListener('DOMContentLoaded', () => {
     const stockList = document.getElementById('stock-list');
-    const marketSymbols = ['SPX', 'EURONEXT', 'LSE', 'TSX', 'GOLD', 'OIL', 'NATGAS', 'BTCUSD']; // Symbols for major indices and commodities
+    const marketSymbols = ['OIL', 'MSFT', 'GOLD', 'GOOGL', 'AAPL', 'V', 'FB', 'AMZN', 'JNJ', 'BTCUSD', 'JPM', 'TSLA', 'BRK.B']; // Updated list
 
     async function fetchMarketData(symbol) {
         try {
@@ -35,22 +35,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 const price = data['Global Quote']['05. price'];
                 updateTicker(symbol, price);
             } else {
-                console.log("Data unavailable for", symbol);
+                console.log(`Data unavailable or incomplete for ${symbol}`);
             }
         } catch (error) {
-            console.error('Error fetching market data for', symbol, ':', error);
+            console.error(`Error fetching market data for ${symbol}:`, error);
         }
     }
 
     function updateTicker(symbol, price) {
         const listItem = document.createElement('li');
-        listItem.textContent = `${symbol}: ${price}`;
+        listItem.textContent = `${symbol}: ${price} `;
         listItem.classList.add('market-item');
         stockList.appendChild(listItem);
     }
 
     marketSymbols.forEach(symbol => fetchMarketData(symbol));
 });
+
 
 
 

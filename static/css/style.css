@@ -182,8 +182,9 @@ body {
 }
 
 #stock-list {
-    display: inline-flex; /* Inline-flex for horizontal layout */
-    animation: move 20s linear infinite; /* Scrolling animation */
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @keyframes move {
@@ -199,9 +200,9 @@ body {
     color: red; /* Red color for negative changes */
 
     .market-item {
-        margin-right: 20px; /* Spacing between items */
-        color: #d4d4d4; /* Default color, adjust as needed */
-    }
+    margin-right: 15px; /* Spacing between ticker items */
+    color: #d4d4d4; /* Default color, can be customized */
+}
     
     /* Example color coding based on arbitrary condition */
     .market-item.positive {
