@@ -197,6 +197,23 @@ body {
 
 .negative-change {
     color: red; /* Red color for negative changes */
+
+    .market-item {
+        margin-right: 20px; /* Spacing between items */
+        color: #d4d4d4; /* Default color, adjust as needed */
+    }
+    
+    /* Example color coding based on arbitrary condition */
+    .market-item.positive {
+        color: green;
+    }
+    
+    .market-item.negative {
+        color: red;
+    }
+    
+    /* Add more styling as needed */
+    
 }
 
 

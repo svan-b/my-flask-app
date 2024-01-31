@@ -25,34 +25,34 @@ document.getElementById('subscribeForm').addEventListener('submit', function(eve
 // Ticker list
 document.addEventListener('DOMContentLoaded', () => {
     const stockList = document.getElementById('stock-list');
+    const marketSymbols = ['SPX', 'EURONEXT', 'LSE', 'TSX', 'GOLD', 'OIL', 'NATGAS', 'BTCUSD']; // Symbols for major indices and commodities
 
-    async function fetchStockData(symbol) {
+    async function fetchMarketData(symbol) {
         try {
             const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=QKTPR4VSJPW7QY6A`);
             const data = await response.json();
-
-            if (data['Note']) {
-                console.log(data['Note']); // Log the rate limit note
-                // Optionally, show this message on the webpage
-            } else if (data['Global Quote'] && data['Global Quote']['08. previous close']) {
-                const closePrice = data['Global Quote']['08. previous close'];
-                updateTicker(symbol, closePrice);
+            if (data['Global Quote'] && data['Global Quote']['05. price']) {
+                const price = data['Global Quote']['05. price'];
+                updateTicker(symbol, price);
             } else {
                 console.log("Data unavailable for", symbol);
             }
         } catch (error) {
-            console.error('Error fetching stock data for', symbol, ':', error);
+            console.error('Error fetching market data for', symbol, ':', error);
         }
     }
 
-    function updateTicker(symbol, closePrice) {
+    function updateTicker(symbol, price) {
         const listItem = document.createElement('li');
-        listItem.textContent = `${symbol}: ${closePrice}`;
+        listItem.textContent = `${symbol}: ${price}`;
+        listItem.classList.add('market-item');
         stockList.appendChild(listItem);
     }
 
-    fetchStockData('AAPL'); // Test with a single stock symbol
+    marketSymbols.forEach(symbol => fetchMarketData(symbol));
 });
+
+
 
 
 
