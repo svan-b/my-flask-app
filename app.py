@@ -8,6 +8,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mysqldb import MySQL
 from forms import LoginForm, RegistrationForm
 from flask import send_from_directory
+import os
+from flask import Flask, send_from_directory
+from flask_login import login_required
 
 
 app = Flask(__name__)
@@ -85,19 +88,19 @@ def logout():
 @login_required
 def download_stemcell():
     try:
-        # Set the correct relative path to the directory where the file is located
+        # Define the directory where your file is located relative to your project root
         directory = os.path.join(app.root_path, 'static', 'files')
         filename = 'STEMCELL_consolidated.xlsm'
-        
-        # Verify the file exists in the specified directory
-        file_path = os.path.join(directory, filename)
-        if not os.path.isfile(file_path):
-            raise FileNotFoundError(f"File {filename} not found at {file_path}")
 
-        return send_from_directory(directory=directory, filename=filename, as_attachment=True)
+        # Check if the file exists
+        if not os.path.exists(os.path.join(directory, filename)):
+            raise FileNotFoundError(f"File {filename} not found in directory {directory}")
+
+        # Send the file from the directory
+        return send_from_directory(directory, filename, as_attachment=True)
     except Exception as e:
         app.logger.error(f"Error downloading file: {e}")
-        return f"Error downloading file: {e}", 500
+        return "Error downloading file", 500
 
 
 
