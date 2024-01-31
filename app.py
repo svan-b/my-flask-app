@@ -79,13 +79,15 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/download/stemcell')
+@@app.route('/download/stemcell')
 @login_required
 def download_stemcell():
-    path_to_file = r'C:\Users\vanbo\OneDrive\Documents\Onedrive\STEMCELL\STEMCELL_consolidated.xlsm' # Update this path
-    return send_from_directory(directory=os.path.dirname(path_to_file),
-                               filename=os.path.basename(path_to_file),
+    directory = os.path.join(app.root_path, 'static/files')
+    filename = 'STEMCELL_consolidated.xlsm'
+    return send_from_directory(directory=directory,
+                               filename=filename,
                                as_attachment=True)
+
 
 # Existing routes
 @app.route('/')
