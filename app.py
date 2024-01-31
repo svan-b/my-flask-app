@@ -89,6 +89,14 @@ def download_stemcell():
                                as_attachment=True)
 
 
+@app.route('/client')
+@login_required
+def client():
+    # Your logic here
+    return render_template('client.html')
+
+
+
 
 # Existing routes
 @app.route('/')
