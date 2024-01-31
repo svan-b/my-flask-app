@@ -1,6 +1,6 @@
+import os
 from flask import Flask, render_template, url_for, flash, redirect, request, jsonify
 import traceback 
-import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate  # Import Flask-Migrate
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
@@ -85,9 +85,14 @@ def logout():
 @login_required
 def download_stemcell():
     try:
-        # Assuming the file is in the 'static/files/' directory in your project
+        # Correct path to the directory where the file is located
         directory = os.path.join(app.root_path, 'static', 'files')
         filename = 'STEMCELL_consolidated.xlsm'
+        
+        # Make sure the file exists
+        if not os.path.isfile(os.path.join(directory, filename)):
+            raise FileNotFoundError(f"File {filename} not found in directory {directory}")
+
         return send_from_directory(directory=directory, filename=filename, as_attachment=True)
     except Exception as e:
         app.logger.error(f"Error downloading file: {e}")
