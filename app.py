@@ -82,11 +82,15 @@ def logout():
 @app.route('/download/stemcell')
 @login_required
 def download_stemcell():
-    directory = os.path.join(app.root_path, 'static/files')
-    filename = 'STEMCELL_consolidated.xlsm'
-    return send_from_directory(directory=directory,
-                               filename=filename,
-                               as_attachment=True)
+    try:
+        # Assuming the file is in the 'static/files/' directory in your project
+        directory = os.path.join(app.root_path, 'static', 'files')
+        filename = 'STEMCELL_consolidated.xlsm'
+        return send_from_directory(directory=directory, filename=filename, as_attachment=True)
+    except Exception as e:
+        app.logger.error(f"Error downloading file: {e}")
+        return "Error downloading file", 500
+
 
 
 @app.route('/client')
