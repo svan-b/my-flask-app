@@ -2,9 +2,27 @@
 {% block content %}
 <div class="container">
     <h2>Client Portal</h2>
-    <p>Welcome to your Client Portal</p>
-    
-    <a href="{{ url_for('download_stemcell') }}">Download STEMCELL Project</a>
+    <p>Welcome to your Client Portal. Here you can access all essential resources and information regarding our projects.</p>
 
+    <div class="project-description">
+        <h3>About the STEMCELL Project</h3>
+        <p>
+            The STEMCELL Project offers a comprehensive financial model that includes an operating model, updated public comparables, and deal comps. 
+            Key features of the model include:
+        </p>
+        <ul>
+            <li>An <strong>operating model</strong> derived from actual financials for 2020 and 2021, along with projections from 2022 onwards.</li>
+            <li><strong>Public comparables</strong> based on a carefully selected comp group, updated with the latest close of publicly traded companies. The public comps utilize data from 2019 to 2021 (sourced from SEDAR, EDGAR, etc.) and current market data to derive a real-time enterprise value.</li>
+            <li><strong>Deal comps</strong> constructed from available data in company reports, press releases, and financial statements.</li>
+            <li>Application of multiples from public comps to STEMCELL's projected values to achieve valuations.</li>
+            <li>A <strong>Discounted Cash Flow (DCF)</strong> analysis feeding from the operating model, utilizing STEMCELL's weighted average cost of capital based on Thermo Fisher’s WACC calculation.</li>
+            <li>Flexibility to adjust and update the model based on internal estimates and changes in financial inputs.</li>
+        </ul>
+        <p>
+            This dynamic and interactive tool is designed to provide an in-depth analysis of STEMCELL's financial standing, offering valuable insights for strategic decision-making.
+        </p>
+    </div>
+
+    <a href="{{ url_for('download_stemcell') }}" class="download-link">Download STEMCELL Project</a>
 </div>
 {% endblock %}
