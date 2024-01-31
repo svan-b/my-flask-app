@@ -6,6 +6,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mysqldb import MySQL
 from forms import LoginForm, RegistrationForm
+from flask import send_from_directory
 
 app = Flask(__name__)
 
@@ -77,10 +78,14 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route("/client")
+
+@app.route('/download/stemcell')
 @login_required
-def client():
-    return render_template('client.html', title='Client Portal')
+def download_stemcell():
+    path_to_file = '"C:\Users\vanbo\OneDrive\Documents\Onedrive\STEMCELL\STEMCELL_consolidated.xlsm"'  # Update this path
+    return send_from_directory(directory=os.path.dirname(path_to_file),
+                               filename=os.path.basename(path_to_file),
+                               as_attachment=True)
 
 # Existing routes
 @app.route('/')
@@ -145,6 +150,8 @@ def internal_error(error):
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
+
 
 
 
