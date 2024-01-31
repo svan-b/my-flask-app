@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, flash, redirect, request, jsonify
-import traceback
+import traceback 
+import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate  # Import Flask-Migrate
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
@@ -7,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mysqldb import MySQL
 from forms import LoginForm, RegistrationForm
 from flask import send_from_directory
+
 
 app = Flask(__name__)
 
