@@ -3,11 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>market multiply</title>
+    <!-- Dynamic Title -->
+    <title>{% block title %}Market Multiply{% endblock %} - Enhance Your Financial Strategy</title>
+    <!-- Meta Description -->
+    <meta name="description" content="{% block description %}Market Multiply offers expert financial consulting services to help you grow your investments and manage your portfolio effectively.{% endblock %}">
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FinancialService",
+          "name": "Market Multiply",
+          "url": "https://www.marketmultiply.com",
+          "logo": "https://www.marketmultiply.com/static/images/logo.png",
+          "feesAndCommissionsSpecification": "https://www.marketmultiply.com/fees",
+          "currenciesAccepted": "USD, BTC",
+          "openingHours": "Mo-Fr 09:00-17:00",
+          "paymentAccepted": "Cash, Credit Card, Cryptocurrency",
+          "priceRange": "$$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "3137 W Broadway",
+            "addressLocality": "Vancouver",
+            "addressRegion": "BC",
+            "postalCode": "V6K 2H2",
+            "addressCountry": "CA"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-604-220-8129",
+            "contactType": "customer service"
+          }
+        }
+        </script>
+        
 </head>
 <body>
     <!-- Navbar -->
