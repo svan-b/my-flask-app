@@ -1,4 +1,4 @@
-/* static/css/cookieConsent.css */
+/* Cookie consent styles */
 #cookieConsent {
     position: fixed;
     bottom: 0;
@@ -13,7 +13,7 @@
 }
 
 #cookieConsent button {
-    background-color: #007bff;
+    background-color: #004c97;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -23,5 +23,10 @@
 }
 
 #cookieConsent button:hover {
-    background-color: #0056b3;
+    background-color: #003366;
+}
+
+#cookieConsent a {
+    color: #00aaff;
+    text-decoration: underline;
 }
