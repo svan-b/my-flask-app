@@ -21,7 +21,7 @@ body {
     left: 0;
     width: 100%;
     height: 50%; /* Adjust this to cover 50% of the height */
-    background-image: url('https://media.istockphoto.com/id/931975218/photo/sea.jpg?s=612x612&w=0&k=20&c=rJmPIG23w-FSTEMZdSWS5DjLna6SBtSqPQF7dmlpjZ0=');
+    background-image: url('https://res.cloudinary.com/rainforest-cruises/images/c_fill,g_auto/f_auto,q_auto/v1626695181/8-Best-Places-To-Visit-In-Argentina-shutterstock_709668685-igauzu-missiones-argentina/8-Best-Places-To-Visit-In-Argentina-shutterstock_709668685-igauzu-missiones-argentina.jpg');
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -39,6 +39,7 @@ body {
     text-align: center;
     z-index: 1;
     position: relative;
+    margin-top: 25%; /* Adjust margin to center the container */
 }
 
 .content h1 {
