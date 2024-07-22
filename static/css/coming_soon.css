@@ -17,11 +17,12 @@ body {
 
 .background-image {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
     height: 50%; /* Adjust this to cover 50% of the height */
-    background-image: url('https://res.cloudinary.com/rainforest-cruises/images/c_fill,g_auto/f_auto,q_auto/v1626695181/8-Best-Places-To-Visit-In-Argentina-shutterstock_709668685-igauzu-missiones-argentina/8-Best-Places-To-Visit-In-Argentina-shutterstock_709668685-igauzu-missiones-argentina.jpg');
+    background-image: url('https://media.istockphoto.com/id/185114155/photo/day-at-seaside.jpg?s=612x612&w=0&k=20&c=P1u22QbDI3M8cSeK1hg5aFMQKTEyRl4rNCuCnmnbU58=');
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -39,7 +40,6 @@ body {
     text-align: center;
     z-index: 1;
     position: relative;
-    margin-top: 25%; /* Adjust margin to center the container */
 }
 
 .content h1 {
@@ -89,3 +89,4 @@ body {
 .hidden {
     display: none;
 }
+

@@ -45,4 +45,34 @@
     <div id="cookieConsent">
         This website uses cookies to ensure you get the best experience. <a href="/cookie-notice">Learn more</a>
         <button id="acceptCookies">Accept</button>
-        <button id="declineCookies
+        <button id="declineCookies">Decline</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/cookieConsent.js') }}"></script>
+    <script>
+        let currentQuestion = 1;
+
+        function startSurvey() {
+            document.getElementById('emailForm').classList.add('hidden');
+            document.getElementById('survey').classList.remove('hidden');
+            document.getElementById('question1').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < 3) {
+                document.getElementById('question' + currentQuestion).classList.add('hidden');
+                currentQuestion++;
+                document.getElementById('question' + currentQuestion).classList.remove('hidden');
+            } else {
+                document.getElementById('submitSurvey').classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('surveyForm').onsubmit = function(event) {
+            event.preventDefault();
+            // Add your Mailchimp or other survey tool integration here.
+            alert('Survey submitted! Thank you for your feedback.');
+        }
+    </script>
+</body>
+</html>
