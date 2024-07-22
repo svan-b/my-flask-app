@@ -13,6 +13,13 @@ from flask import send_from_directory
 
 app = Flask(__name__)
 
+@app.before_request
+def before_request():
+    if not request.is_secure and not request.headers.get('X-Forwarded-Proto') == 'https':
+        url = request.url.replace('http://', 'https://', 1)
+        code = 301
+        return redirect(url, code=code)
+
 # Configure Mailchimp
 mailchimp = MailchimpMarketing.Client()
 mailchimp.set_config({
