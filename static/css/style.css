@@ -1,220 +1,69 @@
-/* Custom styles for market multiply */
+/* Custom styles for the Coming Soon page */
 
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
 
 body {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Lora', serif;
     background-color: #f8f9fa;
     color: #333;
     margin: 0;
     padding: 0;
-    padding-top: 70px; /* Adjust based on the height of your navbar */
-}
-
-.navbar {
-    background-color: #002761; /* Dark blue background */
-    border-bottom: 3px solid #505050ce; /* Blue border */
-    position: fixed; /* Fixed position */
-    width: 100%; /* Full width */
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
-    z-index: 1000; /* Ensure it stays on top of other elements */
-}
-
-.navbar-dark .navbar-nav .nav-link {
-    color: #fff; /* White text for nav items */
-}
-
-.navbar-dark .navbar-nav .btn-outline-primary {
-    color: #fff; /* White text for buttons */
-    border-color: #fff; /* White border for buttons */
-}
-
-.navbar-dark .navbar-nav .btn-outline-primary:hover {
-    color: #000000; /* Dark blue text on hover */
-    background-color: #fff; /* White background on hover */
-}
-
-.navbar-brand {
-    font-weight: bold;
-    color: #fff;
-}
-
-.nav-link {
-    color: #fff;
-    font-weight: 500;
-}
-
-.footer {
-    background-color: #555;
-    color: #ddd;
-    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .container {
-    max-width: 1200px;
-    margin: auto;
-}
-
-.jumbotron {
-    background-color: rgba(233, 236, 239, 0.8); /* Translucent background */
-    border-radius: 0.5rem;
-    padding: 60px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
     text-align: center;
-    background-image: linear-gradient(
-                        rgba(233, 236, 239, 0.8), /* Translucent layer */
-                        rgba(233, 236, 239, 0.8)
-                      ),
-                      url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2t5c2NyYXBlcnxlbnwwfHwwfHx8MA%3D%3D'); /* Background image */
-    background-size: cover;
-    color: #000;
 }
 
-.jumbotron p {
-    font-size: 1.2rem;
+.content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #007bff;
 }
 
-.intro-text h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #555;
+.content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
 }
 
-.intro-text p {
-    font-size: 1.5rem;
-}
-
-.bio-section {
-    display: flex;
-    justify-content: space-between; /* Adds space between bio and white space */
-    background-color: #f2f2f2;
-    padding: 40px 20px;
-    color: #555;
+.content p {
+    font-size: 1.1rem;
     margin-bottom: 30px;
 }
 
-.bio-section .bio-content {
-    flex-basis: 60%; /* Adjusts the width of the bio content */
-    font-size: 1rem; /* Smaller font size */
+.form-group {
+    margin-bottom: 15px;
 }
 
-.bio-section .white-space {
-    flex-basis: 40%; /* Adjusts the width of the white space */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
 }
 
-
-.bio-section h2 {
-    font-size: 1.5rem;
-    color: #555;
-}
-
-.bio-section p {
-    width: 100%; /* Adjust for mobile layout */
-    font-size: 0.8rem;
-    text-align: justify;
-
-}
-/* Dropdown Menu */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: #555;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .navbar-toggler {
-        border-color: #fff;
-    }
-    .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E..."); /* Ensure this is correctly set */
-    }
-    .navbar-collapse {
-        background-color: #434343;
-    }
-    /* Additional styles for mobile view */
-    .nav-item, .nav-link, .btn {
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-
-    
-    .bio-section {
-        flex-direction: column;
-    }
-
-    .bio-section .bio-content,
-    .bio-section .white-space {
-        flex-basis: 100%;
-    }
-}
-
-/* Stock Ticker Styles */
-.ticker {
-    background-color: #000; /* Black background */
+.btn-primary {
+    background-color: #007bff;
     color: #fff;
-    overflow: hidden;
-    white-space: nowrap; /* Keep ticker in one line */
-    font-size: 0.8rem; /* Adjust font size as needed */
-    height: 25px; /* Adjust height as needed */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
-#stock-list {
-    display: flex;
-    white-space: nowrap;
-    overflow: hidden;
+.btn-primary:hover {
+    background-color: #0056b3;
 }
-
-@keyframes move {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
-
-.positive-change {
-    color: green; /* Green color for positive changes */
-}
-
-.negative-change {
-    color: red; /* Red color for negative changes */
-
-    .market-item {
-    margin-right: 15px; /* Spacing between ticker items */
-    color: #d4d4d4; /* Default color, can be customized */
-}
-    
-    /* Example color coding based on arbitrary condition */
-    .market-item.positive {
-        color: green;
-    }
-    
-    .market-item.negative {
-        color: red;
-    }
-    
-    /* Add more styling as needed */
-    
-}
-
-
