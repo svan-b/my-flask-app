@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarketMultiply - Coming Soon</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/coming_soon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/interactive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cookieConsent.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -39,6 +40,14 @@
             </div>
         </div>
     </div>
+
+    <div id="cookieConsent">
+        This website uses cookies to ensure you get the best experience. 
+        <button id="acceptCookies">Accept</button>
+        <button id="declineCookies">Decline</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/cookieConsent.js') }}"></script>
     <script>
         let currentQuestion = 1;
 
