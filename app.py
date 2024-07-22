@@ -1,5 +1,7 @@
 import os
 from flask import Flask, render_template, url_for, flash, redirect, request, jsonify
+import mailchimp_marketing as MailchimpMarketing
+from mailchimp_marketing.api_client import ApiClientError
 import traceback
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -10,6 +12,13 @@ from forms import LoginForm, RegistrationForm, ComingSoonForm  # Import the new 
 from flask import send_from_directory
 
 app = Flask(__name__)
+
+# Configure Mailchimp
+mailchimp = MailchimpMarketing.Client()
+mailchimp.set_config({
+    "api_key": "YOUR_MAILCHIMP_API_KEY",
+    "server": "YOUR_MAILCHIMP_SERVER_PREFIX"
+})
 
 # MySQL configurations
 app.config['MYSQL_HOST'] = 'myfinancedb.cn4w40eu86mu.us-east-2.rds.amazonaws.com'

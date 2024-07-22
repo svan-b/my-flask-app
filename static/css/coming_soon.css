@@ -1,9 +1,9 @@
-/* Custom styles for the Coming Soon page */
+/* Custom styles for the interactive Coming Soon page */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     background-color: #f8f9fa;
     color: #333;
     margin: 0;
@@ -67,3 +67,8 @@ body {
 .btn-primary:hover {
     background-color: #0056b3;
 }
+
+.hidden {
+    display: none;
+}
+
