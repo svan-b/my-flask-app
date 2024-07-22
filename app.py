@@ -27,6 +27,11 @@ mailchimp.set_config({
     "server": "YOUR_MAILCHIMP_SERVER_PREFIX"
 })
 
+@app.route('/cookie-notice')
+def cookie_notice():
+    return render_template('cookie_notice.html')
+
+
 # MySQL configurations
 app.config['MYSQL_HOST'] = 'myfinancedb.cn4w40eu86mu.us-east-2.rds.amazonaws.com'
 app.config['MYSQL_USER'] = 'admin'
@@ -191,6 +196,8 @@ def internal_error(error):
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
+
 
 
 
