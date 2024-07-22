@@ -20,8 +20,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
-    height: 50%;
+    width: 80%;
+    height: 80%;
     background-image: url('https://media.istockphoto.com/id/185114155/photo/day-at-seaside.jpg?s=612x612&w=0&k=20&c=P1u22QbDI3M8cSeK1hg5aFMQKTEyRl4rNCuCnmnbU58=');
     background-size: cover;
     background-position: center;
