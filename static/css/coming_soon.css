@@ -19,6 +19,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
     width: 82%;
     height: 82%;
     background-color: rgba(128, 128, 128, 0.5); /* Translucent grey */
@@ -31,6 +32,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
     width: 80%;
     height: 80%;
     background-image: url('https://media.istockphoto.com/id/185114155/photo/day-at-seaside.jpg?s=612x612&w=0&k=20&c=P1u22QbDI3M8cSeK1hg5aFMQKTEyRl4rNCuCnmnbU58=');
@@ -79,6 +81,28 @@ body {
 
 .form-control {
     width: 100%;
-   
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #004c97;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #003366;
+}
+
+.hidden {
+    display: none;
+}
 
 
