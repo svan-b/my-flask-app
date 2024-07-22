@@ -20,13 +20,13 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    height: 50%; /* Adjust this to cover 50% of the height */
+    width: 100%;
+    height: 50%;
     background-image: url('https://media.istockphoto.com/id/185114155/photo/day-at-seaside.jpg?s=612x612&w=0&k=20&c=P1u22QbDI3M8cSeK1hg5aFMQKTEyRl4rNCuCnmnbU58=');
     background-size: cover;
     background-position: center;
     z-index: -1;
-    opacity: 0.7; /* Adjust the transparency */
+    opacity: 0.7;
 }
 
 .container {
@@ -35,7 +35,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     width: 90%;
-    max-width: 600px;
+    max-width: 800px;
     padding: 30px;
     text-align: center;
     z-index: 1;
