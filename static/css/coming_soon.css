@@ -19,16 +19,15 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 50%;
+    width: 40%;
     height: 100%;
-    background: linear-gradient(135deg, #2c3e50 25%, #4a6075 75%);
+    background: linear-gradient(135deg, #1e3a58 25%, #2c4e73 75%);
     z-index: -1;
     box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
-    border-radius: 0 50px 50px 0; /* Slight rounding on the right side */
 }
 
 .container {
-    width: 50%;
+    width: 60%;
     max-width: 500px;
     padding: 30px;
     text-align: center;
@@ -37,7 +36,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     position: relative;
-    margin-left: 50%;
+    margin-left: 40%;
 }
 
 .content h1 {
@@ -91,17 +90,27 @@ body {
 /* Animation for the tagline */
 .tagline {
     position: absolute;
-    top: 10%;
-    left: 60%;
+    top: 50%;
+    left: 20%;
     transform: translate(-50%, -50%);
     color: #fff;
     text-align: center;
-}
-
-.tagline span {
-    display: block;
     font-size: 3rem;
     font-weight: bold;
+    animation: ticker 2s steps(20) infinite;
+}
+
+@keyframes ticker {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.tagline .line {
+    display: block;
     animation: fadeIn 2s ease-in-out infinite alternate;
 }
 
