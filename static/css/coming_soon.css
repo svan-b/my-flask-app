@@ -4,7 +4,6 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
     color: #333;
     margin: 0;
     padding: 0;
@@ -13,48 +12,32 @@ body {
     align-items: center;
     height: 100vh;
     position: relative;
+    background-color: #f8f9fa;
 }
 
-.background-grey-box {
+.background {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 77%;
-    height: 77%;
-    background-color: rgba(128, 128, 128, 0.5); /* Translucent grey */
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
-    z-index: -2;
-}
-
-.background-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 76%;
-    height: 76%;
-    background-image: url('https://media.istockphoto.com/id/185114155/photo/day-at-seaside.jpg?s=612x612&w=0&k=20&c=P1u22QbDI3M8cSeK1hg5aFMQKTEyRl4rNCuCnmnbU58=');
-    background-size: cover;
-    background-position: center;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, #2c3e50 25%, #4a6075 75%);
     z-index: -1;
-    opacity: 0.8;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
-    border-radius: 5px; /* Added for rounding edges */
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 0 50px 50px 0; /* Slight rounding on the right side */
 }
 
 .container {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
     width: 50%;
     max-width: 500px;
     padding: 30px;
     text-align: center;
     z-index: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     position: relative;
+    margin-left: 50%;
 }
 
 .content h1 {
@@ -105,4 +88,30 @@ body {
     display: none;
 }
 
+/* Animation for the tagline */
+.tagline {
+    position: absolute;
+    top: 10%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+}
 
+.tagline span {
+    display: block;
+    font-size: 3rem;
+    font-weight: bold;
+    animation: fadeIn 2s ease-in-out infinite alternate;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
