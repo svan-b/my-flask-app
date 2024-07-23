@@ -4,6 +4,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
     color: #333;
     margin: 0;
     padding: 0;
@@ -12,31 +13,54 @@ body {
     align-items: center;
     height: 100vh;
     position: relative;
-    background-color: #f8f9fa;
 }
 
-.background {
+.background-gradient {
     position: absolute;
     top: 0;
     left: 0;
-    width: 40%;
+    width: 50%;
     height: 100%;
-    background: linear-gradient(135deg, #1e3a58 25%, #2c4e73 75%);
+    background: linear-gradient(to bottom right, #0f1b29, #1b2735, #263747);
     z-index: -1;
-    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    font-size: 2.5rem;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+.tagline span {
+    display: block;
+}
+
+.tagline span:nth-child(2) {
+    animation-delay: 2s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .container {
-    width: 60%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 40%;
     max-width: 500px;
     padding: 30px;
     text-align: center;
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     position: relative;
-    margin-left: 40%;
 }
 
 .content h1 {
@@ -85,42 +109,4 @@ body {
 
 .hidden {
     display: none;
-}
-
-/* Animation for the tagline */
-.tagline {
-    position: absolute;
-    top: 50%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    text-align: center;
-    font-size: 3rem;
-    font-weight: bold;
-    animation: ticker 2s steps(20) infinite;
-}
-
-@keyframes ticker {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.tagline .line {
-    display: block;
-    animation: fadeIn 2s ease-in-out infinite alternate;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
