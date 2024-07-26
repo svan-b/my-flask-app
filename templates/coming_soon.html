@@ -13,32 +13,38 @@
     <div class="container">
         <div class="content">
             <h1>MarketMultiply</h1>
-            <h2>Exclusive Client List</h2>
-            <p>We are developing an exciting new wealth management solution. Share your feedback to help shape a solution that realizes your financial dreams.</p>
-            
-            <form method="POST" action="{{ url_for('submit') }}">
-                {{ form.hidden_tag() }}
+            <h2>Coming Soon!</h2>
+            <p>We are developing an exciting new wealth management solution. Share your feedback to help shape a tool that realizes your financial dreams.</p>
+            <form id="emailForm">
                 <div class="form-group">
-                    {{ form.email.label }}
-                    {{ form.email(class="form-control") }}
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
                 </div>
-                <div class="form-group">
-                    {{ form.question1.label }}
-                    {{ form.question1(class="form-control") }}
-                </div>
-                <div class="form-group">
-                    {{ form.question2.label }}
-                    {{ form.question2(class="form-control") }}
-                </div>
-                <div class="form-group">
-                    {{ form.question3.label }}
-                    {{ form.question3(class="form-control") }}
-                </div>
-                <div class="form-group">
-                    {{ form.submit(class="btn btn-primary") }}
-                </div>
+                <button type="button" class="btn btn-primary" onclick="startSurvey()">Submit</button>
             </form>
+            <div id="survey" class="hidden">
+                <form id="surveyForm">
+                    <div id="question1" class="form-group hidden">
+                        <label for="feature">What feature would you like to see?</label>
+                        <textarea id="feature" class="form-control" required></textarea>
+                    </div>
+                    <div id="question2" class="form-group hidden">
+                        <label for="topics">What investment topics are you interested in?</label>
+                        <textarea id="topics" class="form-control" required></textarea>
+                    </div>
+                    <div id="question3" class="form-group hidden">
+                        <label for="comments">Any other comments or suggestions?</label>
+                        <textarea id="comments" class="form-control" required></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+                    <button type="submit" class="btn btn-primary hidden" id="submitSurvey">Submit</button>
+                </form>
+            </div>
         </div>
+    </div>
+
+    <div class="tagline">
+        <span>Your Wealth.</span>
+        <span>Reimagined.</span>
     </div>
 
     <div id="cookieConsent">
@@ -75,6 +81,7 @@
     </script>
 </body>
 </html>
+
 
 
 
