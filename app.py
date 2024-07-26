@@ -61,28 +61,21 @@ def submit():
     form = ComingSoonForm()
     if form.validate_on_submit():
         email = form.email.data
-        suggestions = form.suggestions.data
         question1 = form.question1.data
         question2 = form.question2.data
         question3 = form.question3.data
         
-        # Save email to subscribers table
+        # Insert into feedback table
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO subscribers(email) VALUES (%s)", [email])
-        mysql.connection.commit()
-        subscriber_id = cur.lastrowid
-
-        # Save feedback to feedback table
-        cur.execute("""
-            INSERT INTO feedback(subscriber_id, suggestions, question1, question2, question3)
-            VALUES (%s, %s, %s, %s, %s)
-        """, (subscriber_id, suggestions, question1, question2, question3))
+        cur.execute("INSERT INTO feedback (email, question1, question2, question3) VALUES (%s, %s, %s, %s)",
+                    (email, question1, question2, question3))
         mysql.connection.commit()
         cur.close()
         
-        flash('Thank you for your suggestions!', 'success')
+        flash('Thank you for your feedback!', 'success')
         return redirect(url_for('coming_soon'))
     return render_template('coming_soon.html', form=form)
+
 
 
 if __name__ == '__main__':
