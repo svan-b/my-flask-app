@@ -6,9 +6,12 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mysqldb import MySQL
 from forms import LoginForm, RegistrationForm, ComingSoonForm
-import traceback  # Importing traceback for detailed error logging
+import logging
 
 app = Flask(__name__)
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
 
 # Secure connection enforcement
 @app.before_request
@@ -66,6 +69,8 @@ def submit():
         question2 = form.question2.data
         question3 = form.question3.data
         
+        app.logger.info(f"Form data received: Email={email}, Question1={question1}, Question2={question2}, Question3={question3}")
+        
         try:
             # Insert into feedback table
             cur = mysql.connection.cursor()
@@ -73,17 +78,21 @@ def submit():
                         (email, question1, question2, question3))
             mysql.connection.commit()
             cur.close()
+            app.logger.info("Data inserted into feedback table successfully.")
             flash('Thank you for your feedback!', 'success')
         except Exception as e:
             app.logger.error(f"Error inserting data: {e}")
-            app.logger.error(traceback.format_exc())
             flash('An error occurred. Please try again.', 'danger')
         
         return redirect(url_for('coming_soon'))
+    else:
+        app.logger.error(f"Form validation failed: {form.errors}")
+        flash('Form validation failed. Please check your input.', 'danger')
     return render_template('coming_soon.html', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
 
 
 
