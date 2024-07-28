@@ -101,7 +101,7 @@ body {
 }
 
 .btn-primary {
-    background-color: #004c97;
+    background-color: #000000;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -111,7 +111,7 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #003366;
+    background-color: #23282d;
 }
 
 .hidden {
