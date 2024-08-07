@@ -27,12 +27,14 @@ body {
 
 .tagline {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 25%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
     font-size: 2.5rem;
+    width: 100%;
+    white-space: nowrap;
 }
 
 .tagline span {
@@ -70,6 +72,13 @@ body {
     position: relative;
 }
 
+.content h2.cta {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
 .form-group {
     margin-bottom: 15px;
 }
@@ -81,6 +90,7 @@ body {
     border: 1px solid #ced4da;
     border-radius: 5px;
     text-align: center; /* Center the text */
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
 }
 
 .btn-primary {
