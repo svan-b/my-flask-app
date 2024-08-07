@@ -111,6 +111,12 @@ body {
     display: none;
 }
 
+#thankYouMessage {
+    font-size: 1.5rem;
+    color: #333;
+    padding-top: 10px;
+}
+
 /* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
     body {
