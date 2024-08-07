@@ -90,5 +90,9 @@ def submit():
         flash('Form validation failed. Please check your input.', 'danger')
     return render_template('coming_soon.html', form=form)
 
+@app.route('/cookie-notice')
+def cookie_notice():
+    return render_template('cookie_notice.html')
+
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

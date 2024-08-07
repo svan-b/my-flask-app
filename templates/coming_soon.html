@@ -6,6 +6,7 @@
     <title>MarketMultiply - Coming Soon</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/coming_soon.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/cookieConsent.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -45,7 +46,7 @@
     </div>
 
     <div id="cookieConsent">
-        This website uses cookies to ensure you get the best experience. <a href="/cookie-notice">Learn more</a>
+        This website uses cookies to ensure you get the best experience. <a href="{{ url_for('cookie_notice') }}">Learn more</a>
         <button id="acceptCookies">Accept</button>
         <button id="declineCookies">Decline</button>
     </div>
