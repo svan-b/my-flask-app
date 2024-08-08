@@ -70,7 +70,7 @@ def submit():
     
     try:
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO feedback (suggestions, question1, question2, question3) VALUES (%s, %s, %s, %s)",
+        cur.execute("INSERT INTO feedback (email, question1, question2, question3) VALUES (%s, %s, %s, %s)",
                     (email, question1, question2, question3))
         mysql.connection.commit()
         cur.close()
@@ -96,4 +96,3 @@ def test_db():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
-

@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentQuestion = 1;
 
     function startSurvey() {
+        console.log("Starting survey...");
         document.getElementById('emailForm').classList.add('hidden');
         document.getElementById('survey').classList.remove('hidden');
         document.getElementById('question1').classList.remove('hidden');
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function nextQuestion() {
+        console.log("Moving to next question...");
         document.getElementById('question' + currentQuestion).classList.add('hidden');
         currentQuestion++;
         if (currentQuestion <= 3) {
@@ -24,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('surveyForm').addEventListener('submit', function(event) {
         event.preventDefault();
+        console.log("Submitting survey...");
         const email = document.getElementById('email').value;
         const feature = document.getElementById('feature').value;
         const topics = document.getElementById('topics').value;
@@ -59,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('subscribeForm').addEventListener('submit', function(event) {
         event.preventDefault();
+        console.log("Submitting email...");
         let email = document.getElementById('emailInput').value;
 
         fetch('/subscribe', {
@@ -104,4 +108,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     marketSymbols.forEach(symbol => fetchMarketData(symbol));
 });
-
