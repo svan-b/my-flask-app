@@ -33,15 +33,24 @@ document.getElementById('surveyForm').onsubmit = function(event) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-       
-
-
-
-
-
-
-
-
-
-
-
+        },
+        body: JSON.stringify({
+            email: email,
+            question1: feature,
+            question2: topics,
+            question3: comments
+        })
+    }).then(response => {
+        if (response.ok) {
+            document.getElementById('survey').classList.add('hidden');
+            document.getElementById('thankYouMessage').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('thankYouMessage').classList.add('hidden');
+                document.getElementById('emailForm').reset();
+                document.getElementById('emailForm').classList.remove('hidden');
+            }, 3000);
+        } else {
+            alert('There was an error submitting your feedback. Please try again.');
+        }
+    });
+}

@@ -100,4 +100,52 @@ body {
 }
 
 .btn-primary {
-    background-color: #0000
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #23282d;
+}
+
+.hidden {
+    display: none;
+}
+
+#thankYouMessage {
+    font-size: 1.5rem;
+    color: #333;
+    padding-top: 10px;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 20px;
+    }
+
+    .background-gradient {
+        width: 100%;
+        height: 50%;
+    }
+
+    .tagline {
+        position: static;
+        transform: none;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .container {
+        width: 80%;
+        max-width: 100%;
+        padding: 20px;
+    }
+}
