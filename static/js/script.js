@@ -1,5 +1,3 @@
-// Inside script.js
-
 document.getElementById('subscribeForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevents the default form submit action
     let email = document.getElementById('emailInput').value;
@@ -20,7 +18,6 @@ document.getElementById('subscribeForm').addEventListener('submit', function(eve
         console.error('Error:', error);
     });
 });
-
 
 // Ticker list
 document.addEventListener('DOMContentLoaded', () => {
@@ -51,6 +48,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     marketSymbols.forEach(symbol => fetchMarketData(symbol));
 });
+
+// CSRF token handling and form submission for survey
+document.getElementById('surveyForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const feature = document.getElementById('feature').value;
+    const topics = document.getElementById('topics').value;
+    const comments = document.getElementById('comments').value;
+    const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
+    // AJAX request to submit form data
+    fetch('{{ url_for("submit") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        },
+        body: JSON.stringify({
+            email: email,
+            question1: feature,
+            question2: topics,
+            question3: comments
+        })
+    }).then(response => {
+        if (response.ok) {
+            document.getElementById('survey').classList.add('hidden');
+            document.getElementById('thankYouMessage').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('thankYouMessage').classList.add('hidden');
+                document.getElementById('emailForm').reset();
+                document.getElementById('emailForm').classList.remove('hidden');
+            }, 3000);
+        } else {
+            alert('There was an error submitting your feedback. Please try again.');
+        }
+    });
+});
+
 
 
 

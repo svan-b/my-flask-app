@@ -7,6 +7,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mysqldb import MySQL
 from forms import LoginForm, RegistrationForm, ComingSoonForm
 import logging
+from flask_wtf.csrf import CSRFProtect
+
+csrf = CSRFProtect()
+csrf.init_app(app)
 
 app = Flask(__name__)
 

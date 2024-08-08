@@ -17,14 +17,16 @@
     <div class="container">
         <div class="content">
             <h2 class="cta">Join our Wealth Management Solution</h2>
-            <form id="emailForm">
+            <form id="emailForm" method="POST" action="{{ url_for('submit') }}">
+                {{ form.hidden_tag() }}
                 <div class="form-group">
                     <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
                 </div>
                 <button type="button" class="btn btn-primary" onclick="startSurvey()">Submit</button>
             </form>
             <div id="survey" class="hidden">
-                <form id="surveyForm">
+                <form id="surveyForm" method="POST" action="{{ url_for('submit') }}">
+                    {{ form.hidden_tag() }}
                     <div id="question1" class="form-group hidden">
                         <label for="feature">What feature would you like to see?</label>
                         <textarea id="feature" class="form-control" required></textarea>
@@ -84,12 +86,14 @@
             const feature = document.getElementById('feature').value;
             const topics = document.getElementById('topics').value;
             const comments = document.getElementById('comments').value;
+            const csrfToken = document.querySelector('input[name="csrf_token"]').value;
 
             // AJAX request to submit form data
             fetch('{{ url_for('submit') }}', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
                 },
                 body: JSON.stringify({
                     email: email,
@@ -114,5 +118,6 @@
     </script>
 </body>
 </html>
+
 
 
