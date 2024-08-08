@@ -75,7 +75,8 @@ body {
 .content h1.cta {
     font-family: 'Roboto', sans-serif;
     font-size: 1.8rem;
-    color: #333;
+    color: #FF4500; /* Bright red/orange color */
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
@@ -100,7 +101,7 @@ body {
 }
 
 .btn-primary {
-    background-color: #000000;
+    background-color: #FF4500; /* Bright red/orange color */
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -110,7 +111,7 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #23282d;
+    background-color: #FF6347; /* Slightly lighter red/orange color */
 }
 
 .hidden {
