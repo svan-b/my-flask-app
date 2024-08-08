@@ -16,7 +16,7 @@
     <div class="background-gradient"></div>
     <div class="container">
         <div class="content">
-            <h1 class="cta">Get Early Access to Our Wealth Management Platform</h1>
+            <h1 class="cta">Get Early Access</h1>
             <p>Discover investment strategies and analysis tailored for you. Join our early access program and help shape the future of your investing goals. Sign up now to be part of a community focused on simple investing.</p>
             <form id="emailForm">
                 <div class="form-group">
@@ -60,61 +60,6 @@
     </div>
 
     <script src="{{ url_for('static', filename='js/cookieConsent.js') }}"></script>
-    <script>
-        let currentQuestion = 1;
-
-        function startSurvey() {
-            document.getElementById('emailForm').classList.add('hidden');
-            document.getElementById('survey').classList.remove('hidden');
-            document.getElementById('question1').classList.remove('hidden');
-            document.getElementById('nextQuestion').classList.remove('hidden');
-        }
-
-        function nextQuestion() {
-            document.getElementById('question' + currentQuestion).classList.add('hidden');
-            currentQuestion++;
-            if (currentQuestion <= 3) {
-                document.getElementById('question' + currentQuestion).classList.remove('hidden');
-                if (currentQuestion === 3) {
-                    document.getElementById('nextQuestion').classList.add('hidden');
-                    document.getElementById('submitSurvey').classList.remove('hidden');
-                }
-            }
-        }
-
-        document.getElementById('surveyForm').onsubmit = function(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const feature = document.getElementById('feature').value;
-            const topics = document.getElementById('topics').value;
-            const comments = document.getElementById('comments').value;
-
-            // AJAX request to submit form data
-            fetch('{{ url_for('submit') }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: email,
-                    question1: feature,
-                    question2: topics,
-                    question3: comments
-                })
-            }).then(response => {
-                if (response.ok) {
-                    document.getElementById('survey').classList.add('hidden');
-                    document.getElementById('thankYouMessage').classList.remove('hidden');
-                    setTimeout(() => {
-                        document.getElementById('thankYouMessage').classList.add('hidden');
-                        document.getElementById('emailForm').reset();
-                        document.getElementById('emailForm').classList.remove('hidden');
-                    }, 3000);
-                } else {
-                    alert('There was an error submitting your feedback. Please try again.');
-                }
-            });
-        }
-    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
