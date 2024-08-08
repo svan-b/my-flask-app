@@ -19,4 +19,3 @@ class ComingSoonForm(FlaskForm):
     question2 = TextAreaField('What investment topics are you interested in?', validators=[DataRequired()])
     question3 = TextAreaField('Any other comments or suggestions?', validators=[DataRequired()])
     submit = SubmitField('Submit')
-

@@ -1,5 +1,3 @@
-// static/js/script.js
-
 let currentQuestion = 1;
 
 function startSurvey() {
@@ -29,7 +27,7 @@ document.getElementById('surveyForm').onsubmit = function(event) {
     const comments = document.getElementById('comments').value;
 
     // AJAX request to submit form data
-    fetch('{{ url_for("submit") }}', {
+    fetch('/submit', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -54,3 +52,4 @@ document.getElementById('surveyForm').onsubmit = function(event) {
         }
     });
 }
+
