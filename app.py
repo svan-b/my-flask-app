@@ -14,7 +14,9 @@ csrf = CSRFProtect()
 csrf.init_app(app)
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
+app.logger.setLevel(logging.DEBUG)
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
 
 # Secure connection enforcement
 @app.before_request
