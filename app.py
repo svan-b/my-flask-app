@@ -1,4 +1,3 @@
-import os
 from flask import Flask, render_template, url_for, flash, redirect, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -66,36 +65,26 @@ def coming_soon():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    form = ComingSoonForm()
-    if form.validate_on_submit():
-        email = form.email.data
-        question1 = form.question1.data
-        question2 = form.question2.data
-        question3 = form.question3.data
-        
-        app.logger.info(f"Form data received: Email={email}, Question1={question1}, Question2={question2}, Question3={question3}")
-        
-        # Add this to log the JSON payload
-        app.logger.info(f"Request data: {request.get_json()}")
-        
-        try:
-            # Insert into feedback table
-            cur = mysql.connection.cursor()
-            cur.execute("INSERT INTO feedback (email, question1, question2, question3) VALUES (%s, %s, %s, %s)",
-                        (email, question1, question2, question3))
-            mysql.connection.commit()
-            cur.close()
-            app.logger.info("Data inserted into feedback table successfully.")
-            flash('Thank you for your feedback!', 'success')
-        except Exception as e:
-            app.logger.error(f"Error inserting data: {e}")
-            flash('An error occurred. Please try again.', 'danger')
-        
-        return redirect(url_for('coming_soon'))
-    else:
-        app.logger.error(f"Form validation failed: {form.errors}")
-        flash('Form validation failed. Please check your input.', 'danger')
-    return render_template('coming_soon.html', form=form)
+    data = request.get_json()
+    email = data.get('email')
+    question1 = data.get('question1')
+    question2 = data.get('question2')
+    question3 = data.get('question3')
+
+    app.logger.info(f"Form data received: Email={email}, Question1={question1}, Question2={question2}, Question3={question3}")
+
+    try:
+        # Insert into feedback table
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO feedback (email, question1, question2, question3) VALUES (%s, %s, %s, %s)",
+                    (email, question1, question2, question3))
+        mysql.connection.commit()
+        cur.close()
+        app.logger.info("Data inserted into feedback table successfully.")
+        return jsonify({'success': True})
+    except Exception as e:
+        app.logger.error(f"Error inserting data: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 
 @app.route('/cookie-notice')
 def cookie_notice():
