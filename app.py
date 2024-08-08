@@ -9,10 +9,10 @@ from forms import LoginForm, RegistrationForm, ComingSoonForm
 import logging
 from flask_wtf.csrf import CSRFProtect
 
+app = Flask(__name__)  # This should be before csrf.init_app(app)
+
 csrf = CSRFProtect()
 csrf.init_app(app)
-
-app = Flask(__name__)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -97,7 +97,6 @@ def submit():
         flash('Form validation failed. Please check your input.', 'danger')
     return render_template('coming_soon.html', form=form)
 
-
 @app.route('/cookie-notice')
 def cookie_notice():
     return render_template('cookie_notice.html')
@@ -111,7 +110,6 @@ def test_db():
         return "Database connection successful!"
     except Exception as e:
         return f"Error connecting to the database: {e}"
-
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
