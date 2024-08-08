@@ -8,21 +8,11 @@ from forms import ComingSoonForm
 import logging
 from flask_wtf.csrf import CSRFProtect
 
-app = Flask(__name__)  # This should be before csrf.init_app(app)
-
-csrf = CSRFProtect()
-csrf.init_app(app)
+app = Flask(__name__)
+csrf = CSRFProtect(app)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
-
-# Secure connection enforcement
-@app.before_request
-def before_request():
-    if not request.is_secure and not request.headers.get('X-Forwarded-Proto') == 'https':
-        url = request.url.replace('http://', 'https://', 1)
-        code = 301
-        return redirect(url, code=code)
 
 # MySQL configurations
 app.config['MYSQL_HOST'] = 'myfinancedb.cn4w40eu86mu.us-east-2.rds.amazonaws.com'
@@ -52,7 +42,7 @@ class User(UserMixin, db.Model):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
-        return check_password_hash(self.password)
+        return check_password_hash(password)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -89,20 +79,6 @@ def submit():
     except Exception as e:
         app.logger.error(f"Error inserting data: {e}")
         return jsonify({'success': False, 'error': str(e)})
-
-@app.route('/cookie-notice')
-def cookie_notice():
-    return render_template('cookie_notice.html')
-
-@app.route('/test_db')
-def test_db():
-    try:
-        cur = mysql.connection.cursor()
-        cur.execute("SELECT 1")
-        cur.close()
-        return "Database connection successful!"
-    except Exception as e:
-        return f"Error connecting to the database: {e}"
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
