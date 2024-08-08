@@ -16,17 +16,17 @@
     <div class="background-gradient"></div>
     <div class="container">
         <div class="content">
-            <h2 class="cta">Join our Wealth Management Solution</h2>
-            <form id="emailForm" method="POST" action="{{ url_for('submit') }}">
-                {{ form.hidden_tag() }}
+            <h1>Get Early Access to Our Wealth Management Platform</h1>
+            <h2>Discover the Best Investment Strategies Tailored for You</h2>
+            <p>Join our early access program and help shape the future of personal investing. Whether you're interested in beginner-friendly strategies, low-cost index funds, or alternative investments like real estate and crypto, your insights are invaluable. Sign up now to be part of a community focused on smarter investing and wealth-building in any market.</p>
+            <form id="emailForm">
                 <div class="form-group">
                     <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
                 </div>
-                <button type="button" class="btn btn-primary" onclick="startSurvey()">Submit</button>
+                <button type="button" class="btn btn-primary" onclick="startSurvey()">Sign Up</button>
             </form>
             <div id="survey" class="hidden">
-                <form id="surveyForm" method="POST" action="{{ url_for('submit') }}">
-                    {{ form.hidden_tag() }}
+                <form id="surveyForm">
                     <div id="question1" class="form-group hidden">
                         <label for="feature">What feature would you like to see?</label>
                         <textarea id="feature" class="form-control" required></textarea>
@@ -86,14 +86,12 @@
             const feature = document.getElementById('feature').value;
             const topics = document.getElementById('topics').value;
             const comments = document.getElementById('comments').value;
-            const csrfToken = document.querySelector('input[name="csrf_token"]').value;
 
             // AJAX request to submit form data
             fetch('{{ url_for('submit') }}', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrfToken
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     email: email,
