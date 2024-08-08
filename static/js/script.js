@@ -52,4 +52,3 @@ document.getElementById('surveyForm').onsubmit = function(event) {
         }
     });
 }
-
