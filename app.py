@@ -81,7 +81,7 @@ def submit():
         try:
             # Insert into feedback table
             cur = mysql.connection.cursor()
-            cur.execute("INSERT INTO feedback (email, question1, question2, question3) VALUES (%s, %s, %s, %s)",
+            cur.execute("INSERT INTO feedback (suggestions, question1, question2, question3) VALUES (%s, %s, %s, %s)",
                         (email, question1, question2, question3))
             mysql.connection.commit()
             cur.close()
