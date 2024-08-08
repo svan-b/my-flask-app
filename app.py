@@ -71,6 +71,9 @@ def submit():
         
         app.logger.info(f"Form data received: Email={email}, Question1={question1}, Question2={question2}, Question3={question3}")
         
+        # Add this to log the JSON payload
+        app.logger.info(f"Request data: {request.get_json()}")
+        
         try:
             # Insert into feedback table
             cur = mysql.connection.cursor()
@@ -90,9 +93,21 @@ def submit():
         flash('Form validation failed. Please check your input.', 'danger')
     return render_template('coming_soon.html', form=form)
 
+
 @app.route('/cookie-notice')
 def cookie_notice():
     return render_template('cookie_notice.html')
+
+@app.route('/test_db')
+def test_db():
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT 1")
+        cur.close()
+        return "Database connection successful!"
+    except Exception as e:
+        return f"Error connecting to the database: {e}"
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
