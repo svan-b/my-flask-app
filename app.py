@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, url_for, flash, redirect, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -80,7 +81,7 @@ def submit():
         try:
             # Insert into feedback table
             cur = mysql.connection.cursor()
-            cur.execute("INSERT INTO feedback (email, question1, question2, question3) VALUES (%s, %s, %s, %s)",
+            cur.execute("INSERT INTO feedback (suggestions, question1, question2, question3) VALUES (%s, %s, %s, %s)",
                         (email, question1, question2, question3))
             mysql.connection.commit()
             cur.close()
