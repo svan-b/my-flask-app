@@ -16,7 +16,7 @@
     <div class="background-gradient"></div>
     <div class="container">
         <div class="content">
-            <h1 class="cta">Get Early Access</h1>
+            <h1 class="cta">Get Early Access to Our Wealth Management Platform</h1>
             <p>Discover investment strategies and analysis tailored for you. Join our early access program and help shape the future of your investing goals. Sign up now to be part of a community focused on simple investing.</p>
             <form id="emailForm">
                 <div class="form-group">
@@ -38,7 +38,7 @@
                         <label for="comments">Any other comments or suggestions?</label>
                         <textarea id="comments" class="form-control" required></textarea>
                     </div>
-                    <button type="button" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+                    <button type="button" class="btn btn-primary hidden" id="nextQuestion" onclick="nextQuestion()">Next</button>
                     <button type="submit" class="btn btn-primary hidden" id="submitSurvey">Submit</button>
                 </form>
             </div>
@@ -67,15 +67,18 @@
             document.getElementById('emailForm').classList.add('hidden');
             document.getElementById('survey').classList.remove('hidden');
             document.getElementById('question1').classList.remove('hidden');
+            document.getElementById('nextQuestion').classList.remove('hidden');
         }
 
         function nextQuestion() {
-            if (currentQuestion < 3) {
-                document.getElementById('question' + currentQuestion).classList.add('hidden');
-                currentQuestion++;
+            document.getElementById('question' + currentQuestion).classList.add('hidden');
+            currentQuestion++;
+            if (currentQuestion <= 3) {
                 document.getElementById('question' + currentQuestion).classList.remove('hidden');
-            } else {
-                document.getElementById('submitSurvey').classList.remove('hidden');
+                if (currentQuestion === 3) {
+                    document.getElementById('nextQuestion').classList.add('hidden');
+                    document.getElementById('submitSurvey').classList.remove('hidden');
+                }
             }
         }
 
@@ -115,4 +118,3 @@
     </script>
 </body>
 </html>
-
