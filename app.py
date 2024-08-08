@@ -71,6 +71,10 @@ def submit():
     question2 = data.get('question2')
     question3 = data.get('question3')
 
+    if not email or not question1 or not question2 or not question3:
+        app.logger.error("Missing form data")
+        return jsonify({'success': False, 'error': 'Missing form data'})
+
     app.logger.info(f"Form data received: Email={email}, Question1={question1}, Question2={question2}, Question3={question3}")
 
     try:

@@ -22,8 +22,14 @@ document.getElementById('surveyForm').addEventListener('submit', function(event)
             question2: topics,
             question3: comments
         })
-    }).then(response => response.json())
-      .then(data => {
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Server returned an error');
+        }
+    })
+    .then(data => {
         if (data.success) {
             console.log("Survey submitted successfully");
             // Proceed to the next question or display a success message
@@ -33,5 +39,6 @@ document.getElementById('surveyForm').addEventListener('submit', function(event)
         }
     }).catch(error => {
         console.error('Error:', error);
+        alert('There was an error submitting your feedback. Please try again.');
     });
 });
