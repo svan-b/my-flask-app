@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentQuestion = 1;
 
     function startSurvey() {
-        console.log("Starting survey...");
+        console.log("Start Survey button clicked");
         document.getElementById('emailForm').classList.add('hidden');
         document.getElementById('survey').classList.remove('hidden');
         document.getElementById('question1').classList.remove('hidden');
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function nextQuestion() {
-        console.log("Moving to next question...");
+        console.log("Next Question button clicked");
         document.getElementById('question' + currentQuestion).classList.add('hidden');
         currentQuestion++;
         if (currentQuestion <= 3) {
@@ -26,12 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('surveyForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        console.log("Submitting survey...");
+        console.log("Submit Survey button clicked");
         const email = document.getElementById('email').value;
         const feature = document.getElementById('feature').value;
         const topics = document.getElementById('topics').value;
         const comments = document.getElementById('comments').value;
         const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
+        console.log("Submitting survey with data:", { email, feature, topics, comments });
 
         fetch('/submit', {
             method: 'POST',
@@ -47,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }).then(response => {
             if (response.ok) {
+                console.log("Survey submitted successfully");
                 document.getElementById('survey').classList.add('hidden');
                 document.getElementById('thankYouMessage').classList.remove('hidden');
                 setTimeout(() => {
@@ -57,13 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 alert('There was an error submitting your feedback. Please try again.');
             }
+        }).catch(error => {
+            console.error('Error:', error);
         });
     });
 
     document.getElementById('subscribeForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        console.log("Submitting email...");
+        console.log("Submit Email button clicked");
         let email = document.getElementById('emailInput').value;
+
+        console.log("Submitting email:", { email });
 
         fetch('/subscribe', {
             method: 'POST',
@@ -108,3 +115,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     marketSymbols.forEach(symbol => fetchMarketData(symbol));
 });
+

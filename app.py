@@ -13,6 +13,7 @@ csrf = CSRFProtect(app)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 @app.before_request
 def before_request():
@@ -61,12 +62,13 @@ def coming_soon():
 @app.route('/submit', methods=['POST'])
 def submit():
     data = request.get_json()
+    logger.info(f"Data received: {data}")
     email = data.get('email')
     question1 = data.get('question1')
     question2 = data.get('question2')
     question3 = data.get('question3')
     
-    app.logger.info(f"Form data received: Email={email}, Question1={question1}, Question2={question2}, Question3={question3}")
+    logger.info(f"Form data extracted: Email={email}, Question1={question1}, Question2={question2}, Question3={question3}")
     
     try:
         cur = mysql.connection.cursor()
@@ -74,10 +76,10 @@ def submit():
                     (email, question1, question2, question3))
         mysql.connection.commit()
         cur.close()
-        app.logger.info("Data inserted into feedback table successfully.")
+        logger.info("Data inserted into feedback table successfully.")
         return jsonify({'message': 'Thank you for your feedback!'}), 200
     except Exception as e:
-        app.logger.error(f"Error inserting data: {e}")
+        logger.error(f"Error inserting data: {e}")
         return jsonify({'message': 'An error occurred. Please try again.'}), 500
 
 @app.route('/cookie-notice')
