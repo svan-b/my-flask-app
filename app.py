@@ -1,10 +1,10 @@
 from flask import Flask, render_template, url_for, flash, redirect, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from flask_login import LoginManager, UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mysqldb import MySQL
-from forms import LoginForm, RegistrationForm, ComingSoonForm
+from forms import ComingSoonForm
 import logging
 from flask_wtf.csrf import CSRFProtect
 
