@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    document.getElementById('startSurvey').addEventListener('click', startSurvey);
     document.getElementById('nextQuestion').addEventListener('click', nextQuestion);
 
     document.getElementById('surveyForm').addEventListener('submit', function(event) {
@@ -35,18 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log("Submitting survey with data:", { email, feature, topics, comments });
 
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('question1', feature);
+        formData.append('question2', topics);
+        formData.append('question3', comments);
+        formData.append('csrf_token', csrfToken);
+
         fetch('/submit', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrfToken
-            },
-            body: JSON.stringify({
-                email: email,
-                question1: feature,
-                question2: topics,
-                question3: comments
-            })
+            body: formData
         }).then(response => {
             if (response.ok) {
                 console.log("Survey submitted successfully");
@@ -63,6 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(error => {
             console.error('Error:', error);
         });
+    });
+
+    document.getElementById('submitSurvey').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('surveyForm').dispatchEvent(new Event('submit'));
     });
 
     document.getElementById('subscribeForm').addEventListener('submit', function(event) {
