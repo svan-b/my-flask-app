@@ -8,15 +8,12 @@ from forms import LoginForm, RegistrationForm, ComingSoonForm
 import logging
 from flask_wtf.csrf import CSRFProtect
 
-app = Flask(__name__)  # This should be before csrf.init_app(app)
-
-csrf = CSRFProtect()
-csrf.init_app(app)
+app = Flask(__name__)
+csrf = CSRFProtect(app)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 
-# Secure connection enforcement
 @app.before_request
 def before_request():
     if not request.is_secure and not request.headers.get('X-Forwarded-Proto') == 'https':
@@ -24,7 +21,6 @@ def before_request():
         code = 301
         return redirect(url, code=code)
 
-# MySQL configurations
 app.config['MYSQL_HOST'] = 'myfinancedb.cn4w40eu86mu.us-east-2.rds.amazonaws.com'
 app.config['MYSQL_USER'] = 'admin'
 app.config['MYSQL_PASSWORD'] = 'BenjiLouie'
@@ -33,7 +29,6 @@ app.config['MYSQL_PORT'] = 3306
 
 mysql = MySQL(app)
 
-# SQLAlchemy configuration
 app.config['SECRET_KEY'] = 'BenjiLouie'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
@@ -65,36 +60,25 @@ def coming_soon():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    form = ComingSoonForm()
-    if form.validate_on_submit():
-        email = form.email.data
-        question1 = form.question1.data
-        question2 = form.question2.data
-        question3 = form.question3.data
-        
-        app.logger.info(f"Form data received: Email={email}, Question1={question1}, Question2={question2}, Question3={question3}")
-        
-        # Add this to log the JSON payload
-        app.logger.info(f"Request data: {request.get_json()}")
-        
-        try:
-            # Insert into feedback table
-            cur = mysql.connection.cursor()
-            cur.execute("INSERT INTO feedback (suggestions, question1, question2, question3) VALUES (%s, %s, %s, %s)",
-                        (email, question1, question2, question3))
-            mysql.connection.commit()
-            cur.close()
-            app.logger.info("Data inserted into feedback table successfully.")
-            flash('Thank you for your feedback!', 'success')
-        except Exception as e:
-            app.logger.error(f"Error inserting data: {e}")
-            flash('An error occurred. Please try again.', 'danger')
-        
-        return redirect(url_for('coming_soon'))
-    else:
-        app.logger.error(f"Form validation failed: {form.errors}")
-        flash('Form validation failed. Please check your input.', 'danger')
-    return render_template('coming_soon.html', form=form)
+    data = request.get_json()
+    email = data.get('email')
+    question1 = data.get('question1')
+    question2 = data.get('question2')
+    question3 = data.get('question3')
+    
+    app.logger.info(f"Form data received: Email={email}, Question1={question1}, Question2={question2}, Question3={question3}")
+    
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO feedback (suggestions, question1, question2, question3) VALUES (%s, %s, %s, %s)",
+                    (email, question1, question2, question3))
+        mysql.connection.commit()
+        cur.close()
+        app.logger.info("Data inserted into feedback table successfully.")
+        return jsonify({'message': 'Thank you for your feedback!'}), 200
+    except Exception as e:
+        app.logger.error(f"Error inserting data: {e}")
+        return jsonify({'message': 'An error occurred. Please try again.'}), 500
 
 @app.route('/cookie-notice')
 def cookie_notice():
@@ -112,3 +96,4 @@ def test_db():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+

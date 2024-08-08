@@ -1,4 +1,3 @@
-// CSRF token handling and form submission for survey
 document.addEventListener('DOMContentLoaded', () => {
     let currentQuestion = 1;
 
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const comments = document.getElementById('comments').value;
         const csrfToken = document.querySelector('input[name="csrf_token"]').value;
 
-        // AJAX request to submit form data
         fetch('/submit', {
             method: 'POST',
             headers: {
@@ -60,10 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('subscribeForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevents the default form submit action
+        event.preventDefault();
         let email = document.getElementById('emailInput').value;
 
-        // AJAX request to send email to Flask server
         fetch('/subscribe', {
             method: 'POST',
             headers: {
@@ -73,16 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(response => response.json())
         .then(data => {
-            alert(data.message); // Show response message
+            alert(data.message);
         })
         .catch(error => {
             console.error('Error:', error);
         });
     });
 
-    // Ticker list
     const stockList = document.getElementById('stock-list');
-    const marketSymbols = ['OIL', 'MSFT', 'GOLD', 'GOOGL', 'AAPL', 'V', 'FB', 'AMZN', 'JNJ', 'BTCUSD', 'JPM', 'TSLA', 'BRK.B']; // Updated list
+    const marketSymbols = ['OIL', 'MSFT', 'GOLD', 'GOOGL', 'AAPL', 'V', 'FB', 'AMZN', 'JNJ', 'BTCUSD', 'JPM', 'TSLA', 'BRK.B'];
 
     async function fetchMarketData(symbol) {
         try {
@@ -108,3 +104,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     marketSymbols.forEach(symbol => fetchMarketData(symbol));
 });
+
