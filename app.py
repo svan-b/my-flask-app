@@ -1,4 +1,3 @@
-import os
 from flask import Flask, render_template, url_for, flash, redirect, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -75,13 +74,10 @@ def submit():
         
         app.logger.info(f"Form data received: Email={email}, Question1={question1}, Question2={question2}, Question3={question3}")
         
-        # Add this to log the JSON payload
-        app.logger.info(f"Request data: {request.get_json()}")
-        
         try:
-            # Insert into feedback table
+            # Adjusted the database insert to match the schema
             cur = mysql.connection.cursor()
-            cur.execute("INSERT INTO feedback (suggestions, question1, question2, question3) VALUES (%s, %s, %s, %s)",
+            cur.execute("INSERT INTO feedback (email, question1, question2, question3) VALUES (%s, %s, %s, %s)",
                         (email, question1, question2, question3))
             mysql.connection.commit()
             cur.close()
