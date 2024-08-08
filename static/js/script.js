@@ -1,14 +1,11 @@
-document.getElementById('surveyForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+document.getElementById('emailForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
     console.log("Submit Survey button clicked");
 
     const email = document.querySelector('input[name="email"]').value;
-    const feature = document.querySelector('textarea[name="question1"]').value;
-    const topics = document.querySelector('textarea[name="question2"]').value;
-    const comments = document.querySelector('textarea[name="question3"]').value;
     const csrfToken = document.querySelector('input[name="csrf_token"]').value;
 
-    console.log("Submitting survey with data:", { email, feature, topics, comments });
+    console.log("Submitting survey with data:", { email });
 
     fetch('/submit', {
         method: 'POST',
@@ -17,10 +14,7 @@ document.getElementById('surveyForm').addEventListener('submit', function(event)
             'X-CSRFToken': csrfToken
         },
         body: JSON.stringify({
-            email: email,
-            question1: feature,
-            question2: topics,
-            question3: comments
+            email: email
         })
     }).then(response => {
         if (response.ok) {
@@ -32,8 +26,8 @@ document.getElementById('surveyForm').addEventListener('submit', function(event)
     .then(data => {
         if (data.success) {
             console.log("Survey submitted successfully");
-            // Display a success message or proceed further
-            alert('Thank you for your submission!');
+            document.getElementById('thankYouMessage').classList.remove('hidden');
+            document.getElementById('emailForm').classList.add('hidden');
         } else {
             alert('There was an error submitting your feedback. Please try again.');
         }
