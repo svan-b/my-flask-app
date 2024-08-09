@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Form</title>
+</head>
+<body>
+    <form id="testForm">
+        <label for="testEmail">Email:</label>
+        <input type="email" id="testEmail" name="email" placeholder="Enter your email" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            console.log("Form submitted");
+
+            const email = document.getElementById('testEmail').value;
+            console.log("Email value:", email);
+        });
+    </script>
+</body>
+</html>
+

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, redirect, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager, UserMixin
@@ -42,7 +42,7 @@ class User(UserMixin, db.Model):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
-        return check_password_hash(self.password)
+        return check_password_hash(password)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -57,18 +57,21 @@ def coming_soon():
 def submit():
     data = request.get_json()
     email = data.get('email')
+    question1 = data.get('question1')
+    question2 = data.get('question2')
+    question3 = data.get('question3')
 
-    if not email:
-        app.logger.error("Email is missing")
-        return jsonify({'success': False, 'error': 'Email is required'})
+    if not email or not question1 or not question2 or not question3:
+        app.logger.error("Missing form data")
+        return jsonify({'success': False, 'error': 'Missing form data'})
 
-    app.logger.info(f"Form data received: Email={email}")
+    app.logger.info(f"Form data received: Email={email}, Question1={question1}, Question2={question2}, Question3={question3}")
 
     try:
         # Insert into feedback table
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO feedback (email, question1, question2, question3) VALUES (%s, %s, %s, %s)",
-                    (email, '', '', ''))
+                    (email, question1, question2, question3))
         mysql.connection.commit()
         cur.close()
         app.logger.info("Data inserted into feedback table successfully.")

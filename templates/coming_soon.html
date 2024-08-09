@@ -18,7 +18,9 @@
         <div class="content">
             <h1 class="cta">Get Early Access</h1>
             <p>Discover investment strategies and analysis tailored for you. Join our early access program and help shape the future of your investing goals. Sign up now to be part of a community focused on simple investing.</p>
-            <form id="emailForm" method="POST" action="/submit">
+            
+            <!-- Email Form -->
+            <form id="emailForm">
                 {{ form.hidden_tag() }}
                 <div class="form-group">
                     {{ form.email.label(class="form-label") }}
@@ -26,27 +28,25 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
-            <div id="survey" class="hidden">
-                <form id="surveyForm" method="POST">
+            
+            <!-- Follow-Up Questions Section (Initially Hidden) -->
+            <div id="questionSection" class="hidden">
+                <form id="surveyForm">
                     {{ form.hidden_tag() }}
-                    <div id="question1" class="form-group hidden">
+                    <div class="form-group">
                         <label for="feature">What feature would you like to see?</label>
                         <textarea id="feature" name="question1" class="form-control" required></textarea>
                     </div>
-                    <div id="question2" class="form-group hidden">
+                    <div class="form-group">
                         <label for="topics">What investment topics are you interested in?</label>
                         <textarea id="topics" name="question2" class="form-control" required></textarea>
                     </div>
-                    <div id="question3" class="form-group hidden">
+                    <div class="form-group">
                         <label for="comments">Any other comments or suggestions?</label>
                         <textarea id="comments" name="question3" class="form-control" required></textarea>
                     </div>
-                    <button type="button" class="btn btn-primary hidden" id="nextQuestion" onclick="nextQuestion()">Next</button>
-                    <button type="submit" class="btn btn-primary hidden" id="submitSurvey">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
                 </form>
-            </div>
-            <div id="thankYouMessage" class="hidden">
-                <p>Thank you for your feedback!</p>
             </div>
         </div>
     </div>
@@ -66,3 +66,4 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
+
